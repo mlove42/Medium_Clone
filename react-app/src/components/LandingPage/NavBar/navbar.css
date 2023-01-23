@@ -1,0 +1,64 @@
+.wrapper {
+    /* border: solid blue; */
+    display: flex;
+    padding: 1.25rem;
+    justify-content: center;
+    /* gap: 2.5rem; */
+    background: #fcc017;
+    width: 100%;
+    margin-left: -7.9px;
+    margin-top: -7.8px;
+    /* border: solid red; */
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+.content {
+    /* border: solid pink; */
+    display: flex;
+    flex: 1 1 0%;
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+.logo {
+    /* border: solid red; */
+    object-fit: contain;
+    cursor: pointer;
+    height: 40px;
+    width: 200px;
+}
+
+.bannerNav {
+    border: solid red;
+    display: flex;
+    margin-left: 2.25rem;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.accentedButton {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 9999px;
+    /* padding: 0.6rem; */
+}
+
+.story {
+    padding: 0.5rem;
+}
+
+.membership {
+    padding: 0.5rem;
+}
+
+.signup {
+    padding: 0.5rem;
+}

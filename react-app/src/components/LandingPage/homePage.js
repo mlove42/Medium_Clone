@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getStories } from "../../store/story";
+import Banner from "./Banner/banner";
+import PostCard from "./postCard/postCard";
 const AllStories = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -15,8 +17,14 @@ const AllStories = () => {
 
     return (
         <>
-            <h1>home</h1>
-            <h2>we made it</h2>
+            <div className="home-wrapper">
+                <Banner />
+                <div className="post-main">
+                    <div className="posts-list">
+                        <PostCard />
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

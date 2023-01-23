@@ -41,7 +41,8 @@ class Story(db.Model):
             "title": self.title,
             "body": self.body,
             "brief": self.brief,
-            "estimatedRead": self.estimated_read
+            "estimatedRead": self.estimated_read,
+            "storyImage": self.image
         }
    
     def to_dict_all(self):
