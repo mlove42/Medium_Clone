@@ -33,9 +33,9 @@ class Story(db.Model):
         return {
             "id": self.id,
             "userId": self.user_id,
-            "firstName": self.story_author.to_dict()["firstName"],
-            "lastName": self.story_author.to_dict()['lastName'],
-            "picture":self.story_author.to_dict()['picture'],
+            "firstName": self.story_author.to_dict_basic()["firstName"],
+            "lastName": self.story_author.to_dict_basic()['lastName'],
+            "picture":self.story_author.to_dict_basic()['picture'],
             "title": self.title,
             "body": self.body
         }
