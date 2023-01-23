@@ -8,8 +8,10 @@ class Story(db.Model):
         __table_args__ = {'schema': SCHEMA}
     
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(300), nullable=False)
-    body = db.Column(db.String(300), nullable=False)
+    title = db.Column(db.String(50), nullable=False)
+    body = db.Column(db.String, nullable=False)
+    brief = db.Column(db.String(150), nullable=False)
+    estimated_read = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -37,7 +39,9 @@ class Story(db.Model):
             "lastName": self.story_author.to_dict_basic()['lastName'],
             "picture":self.story_author.to_dict_basic()['picture'],
             "title": self.title,
-            "body": self.body
+            "body": self.body,
+            "brief": self.brief,
+            "estimatedRead": self.estimated_read
         }
    
     def to_dict_all(self):
