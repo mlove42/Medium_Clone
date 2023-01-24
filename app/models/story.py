@@ -42,7 +42,8 @@ class Story(db.Model):
             "body": self.body,
             "brief": self.brief,
             "estimatedRead": self.estimated_read,
-            "storyImage": self.image
+            "storyImage": self.image,
+            "date": self.created_at
         }
    
     def to_dict_all(self):
@@ -53,8 +54,12 @@ class Story(db.Model):
             "userId": self.user_id,
             "title": self.title,
             "body": self.body, 
-            'likes': [like.to_dict() for like in self.likes],
-            "comments": [comments.to_dict() for comments in self.story_comment],
+            "brief": self.brief,
+            "estimatedRead": self.estimated_read,
+            "image": self.image,
+            # 'likes': [like.to_dict() for like in self.likes],
+            # "comments": [comments.to_dict() for comments in self.story_comment],
+            "author": self.story_author.to_dict_basic()
         }
     
     def to_dict_basic(self):

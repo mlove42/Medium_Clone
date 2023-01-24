@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 import User from "./components/User";
 import AllStories from "./components/LandingPage/homePage";
+import ViewStory from "./components/StoryDetailsPage/ViewStory";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -28,11 +29,11 @@ function App() {
 
     return (
         <BrowserRouter>
-            <NavBar />
             <Switch>
                 <Route path="/login" exact={true}>
                     <LoginForm />
                 </Route>
+
                 <Route path="/sign-up" exact={true}>
                     <SignUpForm />
                 </Route>
@@ -40,7 +41,12 @@ function App() {
                 <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
                 </ProtectedRoute>
+
+                <ProtectedRoute path="/story/:storyId" exact={true}>
+                    <ViewStory />
+                </ProtectedRoute>
                 <Route path="/" exact={true}>
+                    <NavBar />
                     <AllStories />
                 </Route>
             </Switch>

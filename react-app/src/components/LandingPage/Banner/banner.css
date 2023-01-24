@@ -1,4 +1,5 @@
 .banner-Wrapper {
+    /* margin-top: 500px; */
     border: solid green;
     display: flex;
     justify-content: center;

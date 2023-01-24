@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getStories } from "../../store/story";
 import Banner from "./Banner/banner";
+import NavBar from "./NavBar/NavBar";
 import PostCard from "./postCard/postCard";
 const AllStories = () => {
     const history = useHistory();
@@ -10,7 +11,7 @@ const AllStories = () => {
     const stories = useSelector((store) => {
         return store;
     });
-    console.log(stories, "STORE");
+    // console.log(stories, "STORE");
     useEffect(() => {
         dispatch(getStories());
     }, [dispatch]);

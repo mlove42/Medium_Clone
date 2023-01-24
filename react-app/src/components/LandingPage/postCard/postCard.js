@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, Link } from "react-router-dom";
+
 // import { getStories } from "../../store/story";
-import { getStories } from "../../../store/story";
+import { getStories, getStoryById } from "../../../store/story";
 import "./postCard.css";
 const PostCard = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+
     const stories = useSelector((store) => {
         return Object.values(store.story);
     });
-    console.log(stories, "STORIES INFO");
+    // console.log(stories, "STORIES INFO");
 
     useEffect(() => {
         dispatch(getStories());
@@ -33,8 +35,15 @@ const PostCard = () => {
                                     {story.firstName} {story.lastName}
                                 </div>
                             </div>
-                            <h3 className="title-home">{story.title}</h3>
-                            <div className="briefing">{story.brief}</div>
+                            <Link
+                                to={`/story/${story.id}`}
+                                onClick={() => {
+                                    dispatch(getStoryById(story.id));
+                                }}
+                            >
+                                <h3 className="title-home">{story.title}</h3>
+                                <div className="briefing">{story.brief}</div>
+                            </Link>
                             <div className="details-container">
                                 <span className="article-details">
                                     June 15 • {story.estimatedRead} min read •{" "}

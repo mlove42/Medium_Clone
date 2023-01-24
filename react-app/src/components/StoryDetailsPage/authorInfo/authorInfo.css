@@ -1,0 +1,112 @@
+.author-info-wrapper {
+    /* border: solid blue; */
+    height: 100vh;
+    min-width: 10rem;
+    max-width: 25rem;
+    flex: 1 1 0%;
+    padding: 2rem;
+}
+
+.info-black-button {
+    display: flex;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 1.45rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.info-search-container {
+    border: solid 0.01rem;
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding-left: 7px;
+    gap: 0.6rem;
+    height: 2.6rem;
+}
+
+.info-searchInput {
+    border-style: none;
+    outline: 0;
+    background-image: none;
+    width: 90%;
+    height: 80%;
+    /* background: none;
+    border-style: none;
+    width: 100%; */
+}
+
+.author-info-container {
+    /* border: solid brown; */
+    margin-top: 2rem;
+}
+
+.author-info-profile-image-container {
+    /* border: solid green; */
+    border-radius: 9999px;
+    overflow: hidden;
+    height: 5rem;
+    width: 5rem;
+}
+.info-right-image {
+    /* border: solid blue; */
+    /* margin-left: 10px; */
+    object-fit: cover;
+    margin-top: -10px;
+    margin-right: 10px;
+    padding-left: 0px;
+    width: 80px;
+    height: 88px;
+}
+
+.author-name-info {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    margin-top: 1rem;
+}
+
+.info-author-following {
+    color: #787878;
+}
+
+.info-author-action {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.info-action-button {
+    border: none;
+    /* border: solid red; */
+    background-color: #1a8917;
+    color: white;
+    border-radius: 9999px;
+    /* padding-left: 3px; */
+    padding: 0.6rem;
+}
+
+.author-bio-containers {
+    /* border: solid red; */
+    margin-top: 15px;
+    height: 100px;
+    width: 300px;
+}
+
+.info-following {
+    margin-top: 30px;
+    /* border: solid green; */
+}
+
+.info-folower-container {
+    /* border: solid red; */
+    display: flex;
+    margin-top: 15px;
+    gap: 1rem;
+}
