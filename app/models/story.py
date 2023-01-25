@@ -12,7 +12,7 @@ class Story(db.Model):
     body = db.Column(db.String, nullable=False)
     brief = db.Column(db.String(150), nullable=False)
     estimated_read = db.Column(db.Integer, nullable=False)
-    image = db.Column(db.String, nullable=True)
+    image = db.Column(db.String, nullable=True, default="https://archive.org/download/no-photo-available/no-photo-available.png")
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -60,6 +60,21 @@ class Story(db.Model):
             # 'likes': [like.to_dict() for like in self.likes],
             # "comments": [comments.to_dict() for comments in self.story_comment],
             "author": self.story_author.to_dict_basic()
+        }
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.user_id,
+            "title": self.title,
+            "body": self.body,
+            "brief": self.brief,
+            "estimatedRead": self.estimated_read,
+            "image": self.image, 
+
+       
+
+        
         }
     
     def to_dict_basic(self):

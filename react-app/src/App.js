@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import User from "./components/User";
 import AllStories from "./components/LandingPage/homePage";
 import ViewStory from "./components/StoryDetailsPage/ViewStory";
+import CreateStory from "./components/forms/CreateStoryForm";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -41,7 +42,9 @@ function App() {
                 <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
                 </ProtectedRoute>
-
+                <ProtectedRoute path="/story" exact={true}>
+                    <CreateStory />
+                </ProtectedRoute>
                 <ProtectedRoute path="/story/:storyId" exact={true}>
                     <ViewStory />
                 </ProtectedRoute>

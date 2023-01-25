@@ -6,7 +6,7 @@ import LogoutButton from "../../auth/LogoutButton";
 import LoginFormModal from "../../modals/LoginFormModal/index";
 import SignUpFormModal from "../../modals/SignUpModal/index";
 import "./navbar.css";
-
+import { BsPencilSquare } from "react-icons/bs";
 const NavBar = () => {
     const sessionUser = useSelector((state) => state.session.user);
     console.log(sessionUser, "USER !!!!");
@@ -15,8 +15,10 @@ const NavBar = () => {
     if (sessionUser) {
         sessionLinks = (
             <div className="sign-in-session">
-                <div>
-                    <NavLink to="/story">Write</NavLink>
+                <div className="m">
+                    <NavLink to="/story">
+                        <BsPencilSquare /> Write
+                    </NavLink>
                 </div>
                 <div>
                     {" "}

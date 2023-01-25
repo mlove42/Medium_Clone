@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getStoryById, removeStory } from "../../../store/story";
 import smallLogo from "../../../assets/smallLogo.png";
 import { AiOutlineSearch } from "react-icons/ai";
-import { HiOutlineHome } from "react-icons/hi";
-import { FiBell } from "react-icons/fi";
-import { BiBookmarks } from "react-icons/bi";
-import { RiArticleLine } from "react-icons/ri";
 import { BsPencilSquare } from "react-icons/bs";
 import "./header.css";
 const StoryHeader = () => {
@@ -41,9 +38,9 @@ const StoryHeader = () => {
                 </div>
             </div>
             <div className="right">
-                <div className="m">
+                <NavLink to="/story">
                     <BsPencilSquare /> Write
-                </div>
+                </NavLink>
                 <div>Profile drop down</div>
             </div>
         </div>
