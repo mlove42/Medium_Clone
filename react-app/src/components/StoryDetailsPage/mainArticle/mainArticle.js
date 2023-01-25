@@ -11,6 +11,7 @@ import { GrLinkedin } from "react-icons/gr";
 import { HiOutlineLink } from "react-icons/hi";
 import { BiBookmarks } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
+import AllComments from "../storyComments/allComments";
 const MainArticle = (store) => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
@@ -70,6 +71,9 @@ const MainArticle = (store) => {
                     </h4>
                     <div className="body-article-main">
                         {store?.store?.body}
+                    </div>
+                    <div>
+                        <AllComments />
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import { getStoryById, removeStory } from "../../store/story";
 import StoryHeader from "./header/header";
 import AuthorInfo from "./authorInfo/authorInfo";
 import MainArticle from "./mainArticle/mainArticle";
+
 import "./viewStory.css";
 const ViewStory = () => {
     const dispatch = useDispatch();

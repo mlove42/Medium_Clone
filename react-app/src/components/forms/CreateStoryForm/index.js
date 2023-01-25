@@ -29,7 +29,7 @@ const CreateStory = () => {
 
         dispatch(createStory(newStory));
         // dispatch(getStories());
-        // history.push("/");
+        history.push("/");
     };
 
     return (

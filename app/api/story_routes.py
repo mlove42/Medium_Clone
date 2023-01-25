@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, User, Story, Like
-from app.forms import StoryForm
+from app.models import db, User, Story, Like, Comment
+from app.forms import StoryForm, CommentForm
 # from ..utils import Print
 
 story_routes = Blueprint('story', __name__)
@@ -59,7 +59,7 @@ def edit_story(id):
     return story.to_dict_basic()
 
 
-# Delete a business
+# Delete a story
 @story_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_story(id):
@@ -70,3 +70,28 @@ def delete_story(id):
     db.session.delete(story_delete)
     db.session.commit()
     return {"message": "deleted successfully"}
+
+
+#Get Comments Route
+@story_routes.route('/<int:id>/comments')
+def storyComments(id):
+    comments = Comment.query.filter(Comment.story_id == id).all()
+
+    return {comment.id: comment.to_dict() for comment in comments}
+
+
+@story_routes.route('/<int:id>/comments', methods=['POST'])
+@login_required
+def postReview(id):
+    current_user_id = int(current_user.get_id())
+    form = CommentForm()
+    comment = Comment(
+        body = form.data['body'],
+    
+        user_id = current_user_id,
+        story_id = id
+        )
+  
+    db.session.add(comment)
+    db.session.commit()
+    return comment.to_dict()

@@ -2,29 +2,29 @@ from app.models import db, Comment, environment, SCHEMA
 
 def seed_comments():
     one = Comment(
-        user_id=1,
+        user_id=2,
         story_id=1, 
         body='Why, what a moving story!'
     )
     two = Comment(
         user_id=2,
-        story_id=1, 
+        story_id=2, 
         body="I'm so proud of you"
     )
     three = Comment(
-        user_id=3,
-        story_id=1, 
+        user_id=2,
+        story_id=3, 
         body="Continue to share your stories.  This is much needed"
     )
 
     four = Comment(
-        user_id=1,
-        story_id=2, 
+        user_id=2,
+        story_id=4, 
         body="First to comment"
     )
     five = Comment(
-        user_id=3,
-        story_id=2, 
+        user_id=2,
+        story_id=5, 
         body="I can't wait for part 2!!!"
     )
 

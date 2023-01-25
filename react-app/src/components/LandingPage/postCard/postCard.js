@@ -4,6 +4,7 @@ import { NavLink, useHistory, Link } from "react-router-dom";
 
 // import { getStories } from "../../store/story";
 import { getStories, getStoryById } from "../../../store/story";
+import { getSelectedStoryComments } from "../../../store/comment";
 import "./postCard.css";
 const PostCard = () => {
     const history = useHistory();
@@ -39,6 +40,9 @@ const PostCard = () => {
                                 to={`/story/${story.id}`}
                                 onClick={() => {
                                     dispatch(getStoryById(story.id));
+                                    dispatch(
+                                        getSelectedStoryComments(story.id)
+                                    );
                                 }}
                             >
                                 <h3 className="title-home">{story.title}</h3>
