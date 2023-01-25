@@ -50,9 +50,23 @@ def edit_story(id):
 
     story.title = form.data['title']
     story.body = form.data['body']
+    story.brief = form.data['brief']
+    story.estimated_read = form.data['estimated_read']
     story.image = form.data['image']
 
     db.session.commit()
 
     return story.to_dict_basic()
 
+
+# Delete a business
+@story_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_story(id):
+    data = request.json
+    story_delete = Story.query.get(id)
+
+
+    db.session.delete(story_delete)
+    db.session.commit()
+    return {"message": "deleted successfully"}

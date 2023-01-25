@@ -11,6 +11,7 @@ import User from "./components/User";
 import AllStories from "./components/LandingPage/homePage";
 import ViewStory from "./components/StoryDetailsPage/ViewStory";
 import CreateStory from "./components/forms/CreateStoryForm";
+import EditStory from "./components/forms/EditStoryForm";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
                 {/* <Route path="/sign-up" exact={true}>
                     <SignUpForm />
                 </Route> */}
+                <ProtectedRoute path="/story/:storyId/edit" exact={true}>
+                    <EditStory />
+                </ProtectedRoute>
 
                 <ProtectedRoute path="/users/:userId" exact={true}>
                     <User />
