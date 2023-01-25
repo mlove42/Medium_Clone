@@ -1,10 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../../assets/logo.png";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import LogoutButton from "../../auth/LogoutButton";
+import LoginFormModal from "../../modals/LoginFormModal/index";
+import SignUpFormModal from "../../modals/SignUpModal/index";
 import "./navbar.css";
 
 const NavBar = () => {
+    const sessionUser = useSelector((state) => state.session.user);
+    console.log(sessionUser, "USER !!!!");
+    let sessionLinks;
+
+    if (sessionUser) {
+        sessionLinks = (
+            <div className="sign-in-session">
+                <div>
+                    <NavLink to="/story">Write</NavLink>
+                </div>
+                <div>
+                    {" "}
+                    <LogoutButton />
+                </div>
+            </div>
+        );
+    } else {
+        sessionLinks = (
+            <div className="session-test">
+                <div className="story">Our Story</div>
+                <div className="membership">Membership</div>
+
+                <div className="login-nav">
+                    <LoginFormModal />
+                </div>
+                <div className="signup-nav">
+                    <SignUpFormModal />
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="wrapper">
             <div className="content">
@@ -14,31 +49,7 @@ const NavBar = () => {
                     </NavLink>
                 </div>
                 <div className="bannerNav">
-                    <div className="story">Our Story</div>
-                    <div className="membership">Membership</div>
-                    <div>
-                        <NavLink
-                            to="/login"
-                            exact={true}
-                            activeClassName="active"
-                        >
-                            Login{" "}
-                        </NavLink>
-                    </div>
-                    <div className="signup">
-                        <NavLink
-                            to="/sign-up"
-                            exact={true}
-                            activeClassName="active"
-                        >
-                            Sign Up
-                        </NavLink>
-                    </div>
-                    <div className="accentedButton">Get Started</div>
-                    <div>
-                        {" "}
-                        <LogoutButton />
-                    </div>
+                    <div>{sessionLinks}</div>
                 </div>
             </div>
         </div>
