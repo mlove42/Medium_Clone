@@ -7,24 +7,24 @@ def seed_comments():
         body='Why, what a moving story!'
     )
     two = Comment(
-        user_id=2,
-        story_id=2, 
+        user_id=1,
+        story_id=1, 
         body="I'm so proud of you"
     )
     three = Comment(
-        user_id=2,
-        story_id=3, 
+        user_id=3,
+        story_id=1, 
         body="Continue to share your stories.  This is much needed"
     )
 
     four = Comment(
-        user_id=2,
-        story_id=4, 
+        user_id=4,
+        story_id=1, 
         body="First to comment"
     )
     five = Comment(
-        user_id=2,
-        story_id=5, 
+        user_id=5,
+        story_id=1, 
         body="I can't wait for part 2!!!"
     )
 

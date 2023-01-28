@@ -28,14 +28,14 @@ const StoryHeader = () => {
                         <img src={smallLogo} />
                     </div>
                 </Link>
-                <div className="header-search-container">
+                {/* <div className="header-search-container">
                     <AiOutlineSearch />
                     <input
                         className="info-searchInput"
                         placeholder="Search Medium"
                         type="text"
                     />
-                </div>
+                </div> */}
             </div>
             <div className="right">
                 <NavLink to="/story">

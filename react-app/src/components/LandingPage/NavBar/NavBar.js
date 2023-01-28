@@ -1,15 +1,33 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import logo from "../../../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoutButton from "../../auth/LogoutButton";
 import LoginFormModal from "../../modals/LoginFormModal/index";
 import SignUpFormModal from "../../modals/SignUpModal/index";
+import Menu from "../../menu";
 import "./navbar.css";
 import { BsPencilSquare } from "react-icons/bs";
+import { BiChevronDown } from "react-icons/bi";
 const NavBar = () => {
+    const [showMenu, setShowMenu] = useState(false);
+    console.log(showMenu, "OPEN STATE");
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser, "USER !!!!");
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
+        document.addEventListener("click", closeMenu);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
     let sessionLinks;
 
     if (sessionUser) {
@@ -20,9 +38,18 @@ const NavBar = () => {
                         <BsPencilSquare /> Write
                     </NavLink>
                 </div>
-                <div>
-                    {" "}
-                    <LogoutButton />
+
+                {showMenu && <Menu />}
+                <div className="menu-photo" onClick={openMenu}>
+                    <div className="author-image-container">
+                        <img
+                            className="author-image"
+                            src={sessionUser?.picture}
+                        />
+                    </div>
+                    <div className="icon-menu">
+                        <BiChevronDown />
+                    </div>
                 </div>
             </div>
         );

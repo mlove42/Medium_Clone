@@ -6,7 +6,7 @@ import {
     getSelectedStoryComments,
     deleteMyComment,
 } from "../../../store/comment";
-
+import PostComment from "../../forms/CreateCommentForm";
 const AllComments = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -23,11 +23,12 @@ const AllComments = () => {
         return Object.values(state.comment);
     });
 
-    // const findId = useSelector((state) => {
-    //     return state.comment;
-    // });
+    const state = useSelector((state) => {
+        return state;
+    });
 
-    // console.log(findId.id, "WHERE IS ID");
+    console.log(state.session.user?.id, "STATE!!!!!");
+    console.log(state.comment.user?.id, "STATE!!!!!");
     const test = comments.map((item) => {
         return item;
     });
@@ -35,6 +36,7 @@ const AllComments = () => {
     const userComment = comments?.filter(
         (comment) => comment?.userId === sessionUser?.id
     );
+    // console.log(userComment, "USER COMMENT!!!");
     // console.log(userComment[0].id, "USER COMMENT");
     const deleteComment = () => {
         dispatch(deleteMyComment(userComment[0]?.id));
@@ -43,32 +45,34 @@ const AllComments = () => {
 
         history.push(`/story/${storyId}`);
     };
+    // console.log(comments, "ESTT");
+    // console.log(userComment, "USER COMMENT RESULT");
     return (
         <div>
             <h1>Comments Section</h1>
-
+            <PostComment />
             {comments?.map((comment) => (
                 <>
                     <p>{comment.body} </p>
+
+                    {state.session.user?.id == comment.userId ? (
+                        <>
+                            <button
+                                onClick={() => {
+                                    history.push(
+                                        `/story/${storyId}/comments/${userComment[0].id}`
+                                    );
+                                }}
+                            >
+                                Update Comment
+                            </button>
+                            <button onClick={deleteComment}>
+                                Delete Comment
+                            </button>
+                        </>
+                    ) : null}
                 </>
             ))}
-            <button
-                onClick={() => {
-                    history.push(`/story/${storyId}/comments`);
-                }}
-            >
-                Write A Comment
-            </button>
-            <button
-                onClick={() => {
-                    history.push(
-                        `/story/${storyId}/comments/${userComment[0].id}`
-                    );
-                }}
-            >
-                Update Comment
-            </button>
-            <button onClick={deleteComment}>Delete Comment</button>
         </div>
     );
 };

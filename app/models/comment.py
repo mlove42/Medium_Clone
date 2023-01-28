@@ -26,7 +26,11 @@ class Comment(db.Model):
             "id": self.id,
             "userId": self.user_id,
             "storyId": self.story_id,
-            "body": self.body
+            "body": self.body,
+             "picture":self.comment_owner.to_dict_basic()['picture'],
+             "firstName":self.comment_owner.to_dict_basic()['firstName'],
+             "lastName":self.comment_owner.to_dict_basic()['lastName'],
+           
         }
 
 

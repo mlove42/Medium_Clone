@@ -11,7 +11,9 @@ import { GrLinkedin } from "react-icons/gr";
 import { HiOutlineLink } from "react-icons/hi";
 import { BiBookmarks } from "react-icons/bi";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { FaRegComment } from "react-icons/fa";
 import AllComments from "../storyComments/allComments";
+import SideBar from "../sideBar/sideBar";
 const MainArticle = (store) => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
@@ -19,7 +21,9 @@ const MainArticle = (store) => {
     useEffect(() => {
         dispatch(getStoryById(storyId));
     }, [dispatch]);
-
+    // const handleOpenSideBar = () => {
+    //     setOpen(true);
+    // };
     // console.log(author, "MAIN ");
     return (
         <>
@@ -39,15 +43,15 @@ const MainArticle = (store) => {
                                 <div className="post-details-article">
                                     <span>
                                         January 23rd •{" "}
-                                        {store?.store?.estimatedRead} min read •{" "}
+                                        {store?.store?.estimatedRead} min read{" "}
                                     </span>
-                                    <span className="listen-button-article">
+                                    {/* <span className="listen-button-article">
                                         <AiFillPlayCircle /> Listen
-                                    </span>
+                                    </span> */}
                                 </div>
                             </div>
                         </div>
-                        <div className="socials-article">
+                        {/* <div className="socials-article">
                             <IoLogoTwitter />
                             <FaFacebook />
                             <GrLinkedin />
@@ -55,7 +59,7 @@ const MainArticle = (store) => {
                             <div className="space-article" />
                             <BiBookmarks />
                             <FiMoreHorizontal />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="main-container-article">
                         <div className="banner-container-article">
@@ -72,8 +76,9 @@ const MainArticle = (store) => {
                     <div className="body-article-main">
                         {store?.store?.body}
                     </div>
+                    {/* <button onClick={handleOpenSideBar}>Open SideBar</button> */}
                     <div>
-                        <AllComments />
+                        <SideBar />
                     </div>
                 </div>
             </div>

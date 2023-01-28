@@ -1,0 +1,117 @@
+/* * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+} */
+.header-review {
+    /* padding-left: 140px; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    text-align: center;
+    width: 40%;
+    /* border: solid red; */
+    margin-left: 600px;
+    /* border: solid red; */
+}
+
+.review-div {
+    margin-left: 480px;
+    width: 30%;
+    overflow: hidden;
+
+    /* border: 3px solid green; */
+    /* padding: 10px; */
+}
+.reviews {
+    display: flex;
+
+    /* justify-content: center; */
+    /* align-items: left;
+    flex-direction: column; */
+    margin-left: 650px;
+    /* margin-left: 15px; */
+    width: 25%;
+    /* background-color: pink; */
+    height: auto;
+}
+.reviews-box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background-color: black; */
+    width: 100%;
+}
+
+.review-box {
+    /* border: solid red; */
+    background-color: #ffffff;
+    width: 600px;
+    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.6);
+    padding: 5px;
+    margin: 5px;
+}
+
+.profile-img {
+    /* border: solid red; */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin-top: 0px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+.name-user {
+    /* border: solid blue; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.name-user strong {
+    color: #3d3d3d;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin-bottom: 20px;
+}
+
+.review-ratings {
+    /* border: solid red; */
+}
+
+.comment-section {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: purple; */
+    width: 90%;
+}
+
+.client-comment {
+    border: none;
+}

@@ -14,6 +14,9 @@ import CreateStory from "./components/forms/CreateStoryForm";
 import EditStory from "./components/forms/EditStoryForm";
 import PostComment from "./components/forms/CreateCommentForm";
 import EditComment from "./components/forms/EditCommentForm";
+// import SideBar from "./components/sideBar";
+import CommentCards from "./components/commentCards";
+import Menu from "./components/menu";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -41,6 +44,10 @@ function App() {
                 {/* <Route path="/sign-up" exact={true}>
                     <SignUpForm />
                 </Route> */}
+                <Route path="/story/:storyId/test" exact={true}>
+                    <NavBar />
+                    <CommentCards />
+                </Route>
                 <Route path="/story/:storyId/comments" exact={true}>
                     <PostComment />
                 </Route>
@@ -63,6 +70,14 @@ function App() {
                 <Route path="/" exact={true}>
                     <NavBar />
                     <AllStories />
+                </Route>
+                {/* <Route path="/story/:storyId/sidebar" exact={true}>
+                    <NavBar />
+                    <SideBar />
+                </Route> */}
+                <Route path="/menu" exact={true}>
+                    <NavBar />
+                    <Menu />
                 </Route>
             </Switch>
         </BrowserRouter>

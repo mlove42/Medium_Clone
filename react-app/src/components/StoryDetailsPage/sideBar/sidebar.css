@@ -1,0 +1,106 @@
+.sidebar {
+    animation: openSideBar 200ms ease-in;
+    /* background: linear-gradient(to left, #b3b3b3, #fff); */
+    background: white;
+    width: 26rem;
+    height: 100vh;
+    padding: 1rem;
+
+    /* position: fixed; */
+    left: 0;
+    /* border: solid blue; */
+    overflow-y: scroll;
+    overflow: scroll;
+    top: 4.5rem;
+    left: 91rem;
+    position: absolute;
+}
+
+.removeSide {
+    background: linear-gradient(to left, #b3b3b3, #fff);
+    width: 20rem;
+    height: 100vh;
+    padding: 1rem;
+    position: fixed;
+    left: 0;
+    animation: removeSideBar 200ms ease-in;
+    /* border: solid red; */
+}
+
+.sidebar_cover {
+    position: relative;
+}
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+h1 {
+    font-size: 32px;
+    color: black;
+    margin: 0;
+}
+ul {
+    padding: 0;
+}
+/* li {
+    list-style: none;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    color: #828282;
+    background-color: #b5cffb;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+} */
+
+li.active {
+    background-color: #367bee;
+    color: white;
+}
+
+li:hover {
+    background-color: #367bee;
+    color: white;
+}
+
+@keyframes openSideBar {
+    0% {
+        right: -20rem;
+    }
+    100% {
+        right: 0rem;
+    }
+}
+
+@keyframes removeSideBar {
+    0% {
+        right: 20rem;
+    }
+    100% {
+        right: 0rem;
+    }
+}
+
+.icon-comment {
+    /* border: solid red; */
+    margin-top: 1rem;
+    /* font-size: 2rem; */
+    font-size: 36px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 15px;
+    width: 70px;
+    height: 70px;
+    line-height: 84px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    /* color: #fff; */
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: 200ms;
+}
+
+.icon-comment:hover {
+    transform: scale(1.5);
+}
