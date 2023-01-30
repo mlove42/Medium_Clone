@@ -21,10 +21,7 @@ const MainArticle = (store) => {
     useEffect(() => {
         dispatch(getStoryById(storyId));
     }, [dispatch]);
-    // const handleOpenSideBar = () => {
-    //     setOpen(true);
-    // };
-    // console.log(author, "MAIN ");
+
     return (
         <>
             <div className="wrapper-article">
@@ -34,12 +31,12 @@ const MainArticle = (store) => {
                             <div className="author-image-container-article">
                                 <img
                                     className="author-image-article"
-                                    src={store?.store.author?.picture}
+                                    src={store?.store?.picture}
                                 />
                             </div>
                             <div className="column-article">
-                                {store?.store.author?.firstName}{" "}
-                                {store?.store.author?.lastName}
+                                {store?.store?.firstName}{" "}
+                                {store?.store?.lastName}
                                 <div className="post-details-article">
                                     <span>
                                         January 23rd •{" "}
@@ -65,7 +62,7 @@ const MainArticle = (store) => {
                         <div className="banner-container-article">
                             <img
                                 className="image-main-article"
-                                src={store?.store?.image}
+                                src={store?.store?.storyImage}
                             />
                         </div>
                     </div>

@@ -19,9 +19,10 @@ const AuthorInfo = (store) => {
     }, [dispatch]);
 
     const user = useSelector((state) => state.session.user);
+
     const userId = user.id;
 
-    const authorId = store?.store.author?.id;
+    const authorId = store?.store?.userId;
 
     const editStoryOnClick = (storyId) => {
         history.push(`/story/${storyId}/edit`);
@@ -32,39 +33,43 @@ const AuthorInfo = (store) => {
         // dispatch(getStories());
         history.push("/");
     };
+    // console.log(store, "AUTHOR INFO");
     return (
         <div className="author-info-wrapper">
             <div className="author-info-container">
                 <div className="author-info-profile-image-container">
                     <img
                         className="info-right-image"
-                        src={store?.store.author?.picture}
+                        src={store?.store?.picture}
                     />
                 </div>
                 <div className="author-name-info">
-                    {store?.store.author?.firstName}{" "}
-                    {store?.store.author?.lastName}
+                    {store?.store?.firstName} {store?.store?.lastName}
                 </div>
                 <div className="info-author-following">
                     2 followers (not dynamic yet)
                 </div>
                 <div>
-                    {userId == authorId ? (
-                        <div className="biz-user-btns">
-                            <button
-                                onClick={() =>
-                                    editStoryOnClick(store?.store?.id)
-                                }
-                            >
-                                Edit Story
-                            </button>
-                            <button
-                                onClick={() =>
-                                    deleteStoryOnClick(store?.store?.id)
-                                }
-                            >
-                                Delete Story
-                            </button>
+                    {userId === authorId ? (
+                        <div className="edit-delete-story-container">
+                            <div className="edit-story">
+                                <button
+                                    onClick={() =>
+                                        editStoryOnClick(store?.store?.id)
+                                    }
+                                >
+                                    Edit Story
+                                </button>
+                            </div>
+                            <div className="delete-story">
+                                <button
+                                    onClick={() =>
+                                        deleteStoryOnClick(store?.store?.id)
+                                    }
+                                >
+                                    Delete Story
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         <div className="info-author-action">

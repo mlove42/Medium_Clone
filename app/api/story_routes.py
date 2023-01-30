@@ -36,7 +36,7 @@ def get_story_by_id(id):
 
     story = Story.query.get(id)
 
-    return story.to_dict_all()
+    return story.to_dict_home_page()
 
 
 # Edit a Story

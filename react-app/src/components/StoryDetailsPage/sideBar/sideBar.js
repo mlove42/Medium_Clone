@@ -24,13 +24,9 @@ const SideBar = () => {
     const { storyId } = useParams();
 
     const sessionUser = useSelector((state) => state.session.user);
-
+    console.log(sessionUser, "user info");
     const comments = useSelector((state) => {
         return Object.values(state.comment);
-    });
-
-    const test = comments.map((item) => {
-        return item;
     });
 
     const userComment = comments?.filter(
@@ -68,8 +64,7 @@ const SideBar = () => {
     function findId(id) {
         for (let i = 0; i < userComment.length; i++) {
             let res = userComment[i];
-            // console.log(res.id, "RESULT ID");
-            // console.log(id, "WHAT IS THIS ID");
+
             if (res.id === id) {
             }
             return id;
@@ -81,7 +76,6 @@ const SideBar = () => {
         dispatch(getSelectedStoryComments(storyId));
     }, [dispatch, actionToggled]);
 
-    console.log(actionToggled, "WHAT THIS DO ANYTHING FOR DELETE");
     return (
         <>
             <div style={{ display: "flex" }}>

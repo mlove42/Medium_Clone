@@ -71,7 +71,7 @@ class Story(db.Model):
             "brief": self.brief,
             "estimatedRead": self.estimated_read,
             "image": self.image,
-            'JACK': self.story_comment.to_dict_basic()['id']
+            
 
             # "lastName":self.comment_owner.to_dict_basic()['lastName'],
 

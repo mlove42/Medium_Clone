@@ -18,14 +18,15 @@ const EditStory = () => {
 
     const { storyId } = useParams();
     const story = useSelector((store) => store.story);
+    console.log(story, "THIS IS TH ESTORY");
     console.log(story?.title, "THIS IS THE STORY");
     console.log(story?.brief, "BODY");
     console.log(story?.image, "IMAGE");
     const [title, setTitle] = useState(story?.title);
     const [body, setBody] = useState(story?.body);
     const [brief, setBrief] = useState(story?.brief);
-    const [estimated_read, setEstimatedRead] = useState(story.estimated_read);
-    const [image, setImage] = useState(story.image);
+    const [estimated_read, setEstimatedRead] = useState(story.estimatedRead);
+    const [image, setImage] = useState(story.storyImage);
 
     const handleSubmit = (e) => {
         e.preventDefault();
