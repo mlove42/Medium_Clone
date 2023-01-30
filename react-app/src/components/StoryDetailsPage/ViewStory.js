@@ -7,6 +7,7 @@ import AuthorInfo from "./authorInfo/authorInfo";
 import MainArticle from "./mainArticle/mainArticle";
 
 import "./viewStory.css";
+import AllComments from "./storyComments/allComments";
 const ViewStory = () => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
@@ -23,6 +24,7 @@ const ViewStory = () => {
         <>
             <StoryHeader />
             <div className="view-page-content">
+                {/* <AllComments /> */}
                 <MainArticle store={data} />
 
                 <AuthorInfo store={data} />

@@ -104,3 +104,37 @@ li:hover {
 .icon-comment:hover {
     transform: scale(1.5);
 }
+
+/* .comment-body {
+    border: solid red;
+} */
+
+/* .put-comment {
+    border: solid blue;
+} */
+
+.comment-update button {
+    border: none;
+
+    background-color: green;
+    color: white;
+    font-weight: 900;
+
+    padding: 0.4rem;
+}
+
+.delete-comment button {
+    border: none;
+
+    background-color: red;
+    color: white;
+    font-weight: 900;
+
+    padding: 0.4rem;
+}
+.button-containers {
+    /* border: solid blue; */
+
+    display: flex;
+    justify-content: flex-end;
+}

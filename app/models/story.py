@@ -59,7 +59,7 @@ class Story(db.Model):
             "image": self.image,
             # 'likes': [like.to_dict() for like in self.likes],
             # "comments": [comments.to_dict() for comments in self.story_comment],
-            "author": self.story_author.to_dict_basic()
+            # "huckId": self.story_comment.to_dict()['id']
         }
 
     def to_dict(self):
@@ -70,7 +70,10 @@ class Story(db.Model):
             "body": self.body,
             "brief": self.brief,
             "estimatedRead": self.estimated_read,
-            "image": self.image, 
+            "image": self.image,
+            'JACK': self.story_comment.to_dict_basic()['id']
+
+            # "lastName":self.comment_owner.to_dict_basic()['lastName'],
 
        
 

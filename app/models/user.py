@@ -44,9 +44,12 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'stories': [story.to_dict_all() for story in self.stories],
+            'HUCK': [comment.to_dict() for comment in self.comment],
             "picture": self.profile_pic, 
             'firstName': self.first_name,
-            "lastName": self.last_name
+            "lastName": self.last_name,
+            #   "YESSIR": [test.to_dict() for test in self.comment],
+         
        
         }
 

@@ -30,6 +30,8 @@ class Comment(db.Model):
              "picture":self.comment_owner.to_dict_basic()['picture'],
              "firstName":self.comment_owner.to_dict_basic()['firstName'],
              "lastName":self.comment_owner.to_dict_basic()['lastName'],
+             "hucklove": self.comment_story.to_dict_all(),
+            #   "username": [test.to_dict() for test in self.comment_story],
            
         }
 

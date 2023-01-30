@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
-
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import { getStoryById } from "../../../store/story";
 
-import { getSelectedStoryComments } from "../../../store/comment";
+import {
+    getSelectedStoryComments,
+    deleteMyComment,
+    editMyComment,
+} from "../../../store/comment";
 import "./commentCards.css";
 import { IoCloseSharp } from "react-icons";
 import "./sidebar.css";
 import { IoClose } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
-
+import EditComment from "../../forms/EditCommentForm";
 import PostComment from "../../forms/CreateCommentForm";
 
 const SideBar = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
     const { storyId } = useParams();
-
-    useEffect(() => {
-        dispatch(getStoryById(storyId));
-        dispatch(getSelectedStoryComments(storyId));
-    }, [dispatch, storyId]);
 
     const sessionUser = useSelector((state) => state.session.user);
 
@@ -31,11 +29,6 @@ const SideBar = () => {
         return Object.values(state.comment);
     });
 
-    // const findId = useSelector((state) => {
-    //     return state.comment;
-    // });
-
-    // console.log(findId.id, "WHERE IS ID");
     const test = comments.map((item) => {
         return item;
     });
@@ -44,7 +37,7 @@ const SideBar = () => {
         (comment) => comment?.userId === sessionUser?.id
     );
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     const handleOpenSideBar = () => {
         setOpen(true);
@@ -53,7 +46,42 @@ const SideBar = () => {
     const handleCloseSideBar = () => {
         setOpen(false);
     };
+    //////////////////////////////////////////////////////////////////
+    const [editState, setEditState] = useState(false);
+    let userId = sessionUser && sessionUser.id;
+    const [commentId, setCommentId] = useState("");
+    const comment = useSelector((state) => state?.comment[commentId]);
+    const [body, setBody] = useState("");
+    const [actionToggled, setActionToggled] = useState();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const editComment = {
+            body: body,
+        };
+
+        dispatch(editMyComment(commentId, editComment));
+        setEditState((editState) => !editState);
+    };
+
+    function findId(id) {
+        for (let i = 0; i < userComment.length; i++) {
+            let res = userComment[i];
+            // console.log(res.id, "RESULT ID");
+            // console.log(id, "WHAT IS THIS ID");
+            if (res.id === id) {
+            }
+            return id;
+        }
+    }
+
+    useEffect(() => {
+        dispatch(getStoryById(storyId));
+        dispatch(getSelectedStoryComments(storyId));
+    }, [dispatch, actionToggled]);
+
+    console.log(actionToggled, "WHAT THIS DO ANYTHING FOR DELETE");
     return (
         <>
             <div style={{ display: "flex" }}>
@@ -70,7 +98,10 @@ const SideBar = () => {
                         <div className="reviews-box-container">
                             {comments?.map((comment) => (
                                 <>
-                                    <div className="review-box">
+                                    <div
+                                        key={comment.id}
+                                        className="review-box"
+                                    >
                                         <div className="box-top">
                                             <div className="profile">
                                                 <div className="profile-img">
@@ -92,9 +123,115 @@ const SideBar = () => {
                                         </div>
                                         <div className="comment-section">
                                             <div className="client-comment">
-                                                <p>{comment?.body}</p>
+                                                {commentId === comment.id ? (
+                                                    editState === true &&
+                                                    userId == comment.userId &&
+                                                    comment.id ===
+                                                        findId(commentId) ? (
+                                                        <form
+                                                            className="put-comment"
+                                                            onSubmit={
+                                                                handleSubmit
+                                                            }
+                                                        >
+                                                            <input
+                                                                className="comment-body"
+                                                                type="textarea"
+                                                                required
+                                                                name="body"
+                                                                // value={body}
+                                                                autoFocus
+                                                                onChange={(e) =>
+                                                                    setBody(
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                            ></input>
+                                                            <div className="button-containers">
+                                                                {" "}
+                                                                <div className="comment-update">
+                                                                    <button type=" submit">
+                                                                        Save
+                                                                    </button>
+                                                                </div>
+                                                                <div className="delete-comment">
+                                                                    <button
+                                                                        onClick={() => {
+                                                                            setEditState(
+                                                                                (
+                                                                                    editState
+                                                                                ) =>
+                                                                                    !editState
+                                                                            );
+                                                                        }}
+                                                                    >
+                                                                        Cancel
+                                                                    </button>
+                                                                </div>
+                                                            </div>{" "}
+                                                        </form>
+                                                    ) : (
+                                                        <p>{comment?.body}</p>
+                                                    )
+                                                ) : (
+                                                    <p>{comment?.body}</p>
+                                                )}
                                             </div>
                                         </div>
+                                        {userId == comment.userId &&
+                                        !editState ? (
+                                            <div className="button-containers">
+                                                <div className="comment-update">
+                                                    <button
+                                                        onClick={() => {
+                                                            setEditState(
+                                                                (editState) =>
+                                                                    !editState
+                                                            );
+                                                            setCommentId(
+                                                                comment.id
+                                                            );
+                                                        }}
+                                                    >
+                                                        Edit
+                                                    </button>
+                                                </div>
+                                                <div className="delete-comment">
+                                                    <button
+                                                        onClick={() => {
+                                                            dispatch(
+                                                                deleteMyComment(
+                                                                    comment.id
+                                                                )
+                                                            );
+                                                            console.log(
+                                                                comment.id,
+                                                                "DELETE COMMENT FUNCT"
+                                                            );
+                                                            dispatch(
+                                                                getStoryById(
+                                                                    storyId
+                                                                )
+                                                            );
+                                                            dispatch(
+                                                                getSelectedStoryComments(
+                                                                    storyId
+                                                                )
+                                                            );
+                                                            setActionToggled(
+                                                                (
+                                                                    actionToggled
+                                                                ) =>
+                                                                    !actionToggled
+                                                            );
+                                                        }}
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) : null}
                                     </div>
                                 </>
                             ))}

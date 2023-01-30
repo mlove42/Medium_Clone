@@ -8,7 +8,7 @@ import {
 import { getStories } from "../../../store/story";
 
 function EditComment() {
-    const history = useHistory();
+    const id = useParams;
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state?.session.user);
     const { storyId } = useParams();
@@ -17,6 +17,8 @@ function EditComment() {
     const [body, setBody] = useState(comment?.body);
     const [userId, setUserId] = useState(sessionUser?.id);
 
+    const [editReview, setEditReview] = useState("");
+    const [editState, setEditState] = useState(false);
     useEffect(() => {
         dispatch(getStories());
         dispatch(getSelectedStoryComments(storyId));
@@ -25,18 +27,16 @@ function EditComment() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (sessionUser) {
-            setUserId(sessionUser?.id);
-        }
-
-        const payload = {
+        const editComment = {
             body: body,
         };
 
-        const editedComment = dispatch(editMyComment(commentId, payload));
-
-        history.push(`/story/${storyId}`);
+        dispatch(editMyComment(commentId, editComment));
+        setEditState((editState) => !editState);
+        // history.push(`/story/${storyId}`);
     };
+    // console.log(commentId, "THIS IS THE COMMENT ID");
+    // console.log(editState, "EDIT STATE");
 
     return (
         <>

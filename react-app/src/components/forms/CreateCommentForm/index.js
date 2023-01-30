@@ -11,7 +11,7 @@ function PostComment() {
         return store.session.user;
     });
 
-    console.log(user.firstName, "FIND USER");
+    // console.log(user.firstName, "FIND USER");
     const [body, setBody] = useState("");
 
     const { storyId } = useParams();
