@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useHistory, Link } from "react-router-dom";
+import { NavLink, useHistory, Link, History } from "react-router-dom";
 
 // import { getStories } from "../../store/story";
 import { getStories, getStoryById } from "../../../store/story";
@@ -36,9 +36,11 @@ const PostCard = () => {
                                     {story.firstName} {story.lastName}
                                 </div>
                             </div>
-                            <Link
-                                to={`/story/${story.id}`}
+                            <div
+                                className="card-title-brief"
+                                // to={`/story/${story.id}`}
                                 onClick={() => {
+                                    history.push(`/story/${story.id}`);
                                     dispatch(getStoryById(story.id));
                                     dispatch(
                                         getSelectedStoryComments(story.id)
@@ -47,7 +49,7 @@ const PostCard = () => {
                             >
                                 <h3 className="title-home">{story.title}</h3>
                                 <div className="briefing">{story.brief}</div>
-                            </Link>
+                            </div>
                             <div className="details-container">
                                 <span className="article-details">
                                     June 15 • {story.estimatedRead} min read •{" "}

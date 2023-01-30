@@ -38,9 +38,17 @@ const StoryHeader = () => {
                 </div> */}
             </div>
             <div className="right">
-                <NavLink to="/story">
-                    <BsPencilSquare /> Write
-                </NavLink>
+                <div
+                    className="write-pen"
+                    onClick={() => {
+                        history.push("/story");
+                    }}
+                >
+                    <div>
+                        <BsPencilSquare />
+                    </div>
+                    <div>Write</div>
+                </div>
                 <div>Profile drop down</div>
             </div>
         </div>

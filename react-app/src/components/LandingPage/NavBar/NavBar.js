@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import logo from "../../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoutButton from "../../auth/LogoutButton";
 import LoginFormModal from "../../modals/LoginFormModal/index";
@@ -11,8 +11,9 @@ import "./navbar.css";
 import { BsPencilSquare } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 const NavBar = () => {
+    const history = useHistory();
     const [showMenu, setShowMenu] = useState(false);
-    console.log(showMenu, "OPEN STATE");
+    // console.log(showMenu, "OPEN STATE");
     const sessionUser = useSelector((state) => state.session.user);
 
     const openMenu = () => {
@@ -33,10 +34,16 @@ const NavBar = () => {
     if (sessionUser) {
         sessionLinks = (
             <div className="sign-in-session">
-                <div className="m">
-                    <NavLink to="/story">
-                        <BsPencilSquare /> Write
-                    </NavLink>
+                <div
+                    className="write-header"
+                    onClick={() => {
+                        history.push("/story");
+                    }}
+                >
+                    <div className="pencil-homepage">
+                        <BsPencilSquare />
+                    </div>
+                    <div>Write</div>
                 </div>
 
                 {showMenu && <Menu />}

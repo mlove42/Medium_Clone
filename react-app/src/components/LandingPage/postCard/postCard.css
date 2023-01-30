@@ -5,7 +5,7 @@
     padding-left: 200px;
     align-items: center;
     gap: 1rem;
-    cursor: pointer;
+    /* cursor: pointer; */
     /* border: solid red; */
 }
 .post-details {
@@ -29,15 +29,15 @@
     overflow: hidden;
     place-items: center;
     border-radius: 1999px;
-    height: 2.6rem;
-    width: 2.5rem;
+    height: 3rem;
+    width: 3rem;
 }
 .author-image {
     /* border: solid red; */
     object-fit: cover;
     margin-top: 0px;
-    height: 44px;
-    width: 44px;
+    height: 50px;
+    width: 50px;
 }
 .author-name {
     font-weight: 600;
@@ -79,4 +79,8 @@
     /* border: solid red; */
     width: 190px;
     height: 190px;
+}
+
+.card-title-brief {
+    cursor: pointer;
 }

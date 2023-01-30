@@ -57,3 +57,11 @@
     margin-right: 6px;
     cursor: pointer;
 }
+
+.write-pen {
+    /* border: solid red; */
+    display: flex;
+    cursor: pointer;
+    gap: 0.2rem;
+    cursor: pointer;
+}
