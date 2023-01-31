@@ -1,3 +1,15 @@
+.back-home button {
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+    padding: 1rem;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 9999px;
+    /* padding: 0.6rem; */
+}
+
 .new-story-wrapper {
     /* border: solid red; */
     width: 70rem;

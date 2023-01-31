@@ -9,8 +9,9 @@
     /* height: 100vh; */
     width: 100%;
     padding-left: -4px;
-    height: 4rem;
+    height: 5rem;
     /* padding: 1rem; */
+    /* border: solid purple; */
 }
 .left {
     display: flex;
@@ -44,9 +45,11 @@
 }
 .right {
     display: flex;
-    gap: 3rem;
+    gap: 7rem;
     font-size: x-large;
-    padding-right: 4rem;
+    padding-right: 3rem;
+    /* border: solid red; */
+    margin-right: 3rem;
 }
 
 .smallLogo-container img {
@@ -60,8 +63,10 @@
 
 .write-pen {
     /* border: solid red; */
+
     display: flex;
-    cursor: pointer;
-    gap: 0.2rem;
+    font-size: 1.8rem;
+    margin-top: 10px;
+    gap: 0.3rem;
     cursor: pointer;
 }

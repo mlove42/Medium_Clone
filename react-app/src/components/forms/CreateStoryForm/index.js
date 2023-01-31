@@ -33,88 +33,107 @@ const CreateStory = () => {
     };
 
     return (
-        <div className="new-story-wrapper">
-            <div className="boarder-div">
-                <div className="title-new-story">Write your story</div>
-
-                <form
-                    className="test-form"
-                    method="POST"
-                    onSubmit={handleSubmit}
-                >
-                    <div className="help-div">
-                        <div className="small-field">
-                            <span className="field-title">Title</span>
-                            <span className="input-container-story">
-                                <input
-                                    className="input-field-story"
-                                    type="text"
-                                    placeholder="Enter Title"
-                                    required
-                                    onChange={(e) => setTitle(e.target.value)}
-                                />
-                            </span>
-                        </div>
-
-                        <div className="small-field">
-                            <span className="field-title">Brief</span>
-                            <span className="input-container-story">
-                                <input
-                                    type="text"
-                                    className="input-field-story"
-                                    placeholder="Enter Brief"
-                                    onChange={(e) => setBrief(e.target.value)}
-                                />
-                            </span>
-                        </div>
-                        <div className="small-field">
-                            <span className="field-title">Estimated Read</span>
-                            <span className="input-container-story">
-                                <input
-                                    type="text"
-                                    className="input-field-story"
-                                    placeholder="Enter Estimated Read"
-                                    required
-                                    onChange={(e) =>
-                                        setEstimatedRead(e.target.value)
-                                    }
-                                />
-                            </span>
-                        </div>
-
-                        <div className="small-field">
-                            <span className="field-title">Story Image URL</span>
-                            <span className="input-container-story">
-                                <input
-                                    type="input"
-                                    placeholder="Enter Story Image"
-                                    className="input-field-story"
-                                    // required
-                                    onChange={(e) => setImage(e.target.value)}
-                                />
-                            </span>
-                        </div>
-                        <div className="small-field">
-                            <span className="field-title">Article Text</span>
-                            <span className="input-container-story">
-                                <textarea
-                                    type="text"
-                                    className="input-field-story"
-                                    placeholder="Enter text here"
-                                    rows={24}
-                                    required
-                                    onChange={(e) => setBody(e.target.value)}
-                                />
-                            </span>
-                        </div>
-
-                        <button type="submit" className="button">
-                            Publish Story
-                        </button>
-                    </div>
-                </form>
+        <>
+            <div className="back-home" onClick={() => history.push("/")}>
+                <button>Back to Home</button>
             </div>
-        </div>
+            <div className="new-story-wrapper">
+                <div className="boarder-div">
+                    <div className="title-new-story">Write your story</div>
+
+                    <form
+                        className="test-form"
+                        method="POST"
+                        onSubmit={handleSubmit}
+                    >
+                        <div className="help-div">
+                            <div className="small-field">
+                                <span className="field-title">Title</span>
+                                <span className="input-container-story">
+                                    <input
+                                        className="input-field-story"
+                                        type="text"
+                                        placeholder="Enter Title"
+                                        required
+                                        onChange={(e) =>
+                                            setTitle(e.target.value)
+                                        }
+                                    />
+                                </span>
+                            </div>
+
+                            <div className="small-field">
+                                <span className="field-title">Brief</span>
+                                <span className="input-container-story">
+                                    <input
+                                        type="text"
+                                        className="input-field-story"
+                                        placeholder="Enter Brief"
+                                        onChange={(e) =>
+                                            setBrief(e.target.value)
+                                        }
+                                    />
+                                </span>
+                            </div>
+                            <div className="small-field">
+                                <span className="field-title">
+                                    Estimated Read
+                                </span>
+                                <span className="input-container-story">
+                                    <input
+                                        type="text"
+                                        className="input-field-story"
+                                        placeholder="Enter Estimated Read"
+                                        required
+                                        onChange={(e) =>
+                                            setEstimatedRead(e.target.value)
+                                        }
+                                    />
+                                </span>
+                            </div>
+
+                            <div className="small-field">
+                                <span className="field-title">
+                                    Story Image URL
+                                </span>
+                                <span className="input-container-story">
+                                    <input
+                                        type="input"
+                                        placeholder="Enter Story Image"
+                                        className="input-field-story"
+                                        // required
+                                        onChange={(e) =>
+                                            setImage(e.target.value)
+                                        }
+                                    />
+                                </span>
+                            </div>
+                            <div className="small-field">
+                                <span className="field-title">
+                                    Article Text
+                                </span>
+                                <span className="input-container-story">
+                                    <textarea
+                                        type="text"
+                                        className="input-field-story"
+                                        placeholder="Enter text here"
+                                        rows={24}
+                                        required
+                                        onChange={(e) =>
+                                            setBody(e.target.value)
+                                        }
+                                    />
+                                </span>
+                            </div>
+
+                            <button type="submit" className="button">
+                                Publish Story
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </>
     );
 };
 

@@ -74,14 +74,15 @@
 
 .session-test {
     display: flex;
-    /* border: blue; */
+
     gap: 1rem;
+    margin-right: 5rem;
 }
 
 .sign-in-session {
     /* border: solid purple; */
     display: flex;
-    gap: 3rem;
+    gap: 8rem;
     padding-right: 6rem;
 }
 .write-header {
