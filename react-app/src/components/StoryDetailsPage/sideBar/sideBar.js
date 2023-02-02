@@ -24,7 +24,7 @@ const SideBar = () => {
     const { storyId } = useParams();
 
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser, "user info");
+    // console.log(sessionUser, "user info");
     const comments = useSelector((state) => {
         return Object.values(state.comment);
     });
@@ -199,10 +199,10 @@ const SideBar = () => {
                                                                     comment.id
                                                                 )
                                                             );
-                                                            console.log(
-                                                                comment.id,
-                                                                "DELETE COMMENT FUNCT"
-                                                            );
+                                                            // console.log(
+                                                            //     comment.id,
+                                                            //     "DELETE COMMENT FUNCT"
+                                                            // );
                                                             dispatch(
                                                                 getStoryById(
                                                                     storyId

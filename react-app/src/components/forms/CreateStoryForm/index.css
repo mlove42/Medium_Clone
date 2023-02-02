@@ -12,8 +12,8 @@
 
 .new-story-wrapper {
     /* border: solid red; */
-    width: 70rem;
-    height: 50rem;
+    width: 74rem;
+    height: 60rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

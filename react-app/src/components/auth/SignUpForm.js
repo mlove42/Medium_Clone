@@ -11,21 +11,32 @@ const SignUpForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
+    const [load, setLoad] = useState(false);
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
 
     const onSignUp = async (e) => {
         e.preventDefault();
-        if (password === repeatPassword) {
+        {
             const data = await dispatch(
-                signUp(firstName, lastName, username, email, password)
+                signUp(
+                    firstName,
+                    lastName,
+                    username,
+                    email,
+                    password,
+                    repeatPassword
+                )
             );
+            console.log(password, "PASSWORD-SIGN UP FORM ");
+            console.log(repeatPassword, "CONFIRM SIGN UP FORM ");
+            setLoad((prev) => !prev);
             if (data) {
                 setErrors(data);
+                console.log(data, "this is data");
             }
         }
     };
-
     const updateFirstName = (e) => {
         setFirstName(e.target.value);
     };
@@ -48,10 +59,6 @@ const SignUpForm = () => {
         setRepeatPassword(e.target.value);
     };
 
-    if (user) {
-        return <Redirect to="/" />;
-    }
-
     return (
         <div
             className="signup-form-height modal-content login-signup-page-container"
@@ -71,7 +78,7 @@ const SignUpForm = () => {
                             type="text"
                             name="First Name"
                             onChange={updateFirstName}
-                            required
+                            // required
                             value={firstName}
                         ></input>
                     </div>
@@ -81,7 +88,7 @@ const SignUpForm = () => {
                             type="text"
                             name="Last Name"
                             onChange={updateLastName}
-                            required
+                            // required
                             value={lastName}
                         ></input>
                     </div>
@@ -91,7 +98,7 @@ const SignUpForm = () => {
                             type="text"
                             name="username"
                             onChange={updateUsername}
-                            required
+                            // required
                             value={username}
                         ></input>
                     </div>
@@ -101,7 +108,7 @@ const SignUpForm = () => {
                             type="text"
                             name="email"
                             onChange={updateEmail}
-                            required
+                            // required
                             value={email}
                         ></input>
                     </div>
@@ -111,7 +118,7 @@ const SignUpForm = () => {
                             type="password"
                             name="password"
                             onChange={updatePassword}
-                            required
+                            // required
                             value={password}
                         ></input>
                     </div>
@@ -122,7 +129,7 @@ const SignUpForm = () => {
                             name="repeat_password"
                             onChange={updateRepeatPassword}
                             value={repeatPassword}
-                            required={true}
+                            // required={true}
                         ></input>
                     </div>
                     <button className="Sign-up-login-submit" type="submit">

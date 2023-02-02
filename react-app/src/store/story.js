@@ -1,6 +1,6 @@
 const LOAD_STORIES = "story/LOAD_STORIES";
 const GET_MY_STORY = "story/GET_MY_STORY";
-const ADD_STORY = "story/ADD_BUSINESS";
+const ADD_STORY = "story/ADD_STORY";
 const UPDATE_STORY = "story/UPDATE_STORY";
 const DELETE_STORY = "story/DELETE_STORY";
 const GET_STORY_BY_ID = "story/GET_STORY_BY_ID";
@@ -68,13 +68,22 @@ export const createStory = (storyData) => async (dispatch) => {
         body: JSON.stringify(storyData),
     });
 
+    // console.log(response, "CAN I GET HERE??????");
     if (response.ok) {
         const data = await response.json();
         dispatch(addStory(data));
+    } else if (response.status < 500) {
+        // console.log("IS IT MAKING IT TO HERE??");
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
     }
 };
 
 export const editStory = (storyId, storyData) => async (dispatch) => {
+    console.log(storyId, "STORE STORY ID");
+    console.log(storyData, "redux DATA being send to backend");
     const response = await fetch(`/api/story/${storyData.id}`, {
         method: "PUT",
         headers: {
@@ -85,6 +94,13 @@ export const editStory = (storyId, storyData) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(updateStory(data));
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["An error occurred. Please try again."];
     }
 };
 

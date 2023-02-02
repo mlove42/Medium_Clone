@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./index.css";
-
+import "../error.css";
+import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createStory, getStories } from "../../../store/story";
@@ -10,14 +11,15 @@ import { createStory, getStories } from "../../../store/story";
 const CreateStory = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [brief, setBrief] = useState("");
     const [estimated_read, setEstimatedRead] = useState("");
     const [image, setImage] = useState("");
-
-    const handleSubmit = (e) => {
+    const [load, setLoad] = useState(false);
+    const handleSubmit = async (e) => {
+        // let data;
         e.preventDefault();
         const newStory = {
             title,
@@ -26,10 +28,20 @@ const CreateStory = () => {
             estimated_read,
             image,
         };
+        const data = await dispatch(createStory(newStory));
 
-        dispatch(createStory(newStory));
-        // dispatch(getStories());
-        history.push("/");
+        if (data) {
+            setErrors(data);
+            // console.log(data, "CAN I SEE THIS");
+            // console.log(data.length, "WHAT IS THIS LENGTH");
+        }
+
+        setLoad((prev) => !prev);
+
+        if (!data) {
+            history.push("/");
+        }
+        // setLoad((prev) => !prev);
     };
 
     return (
@@ -54,14 +66,13 @@ const CreateStory = () => {
                                         className="input-field-story"
                                         type="text"
                                         placeholder="Enter Title"
-                                        required
+                                        // required
                                         onChange={(e) =>
                                             setTitle(e.target.value)
                                         }
                                     />
                                 </span>
                             </div>
-
                             <div className="small-field">
                                 <span className="field-title">Brief</span>
                                 <span className="input-container-story">
@@ -77,21 +88,20 @@ const CreateStory = () => {
                             </div>
                             <div className="small-field">
                                 <span className="field-title">
-                                    Estimated Read
+                                    Estimated Read (in minutes)
                                 </span>
                                 <span className="input-container-story">
                                     <input
                                         type="text"
                                         className="input-field-story"
                                         placeholder="Enter Estimated Read"
-                                        required
+                                        // required
                                         onChange={(e) =>
                                             setEstimatedRead(e.target.value)
                                         }
                                     />
                                 </span>
                             </div>
-
                             <div className="small-field">
                                 <span className="field-title">
                                     Story Image URL
@@ -118,14 +128,20 @@ const CreateStory = () => {
                                         className="input-field-story"
                                         placeholder="Enter text here"
                                         rows={24}
-                                        required
+                                        // required
                                         onChange={(e) =>
                                             setBody(e.target.value)
                                         }
                                     />
                                 </span>
                             </div>
-
+                            <div className="error-messages">
+                                {errors?.map((error, ind) => (
+                                    <div className="error" key={ind}>
+                                        {error}
+                                    </div>
+                                ))}
+                            </div>
                             <button type="submit" className="button">
                                 Publish Story
                             </button>
