@@ -39,7 +39,7 @@ const MainArticle = (store) => {
                                 {store?.store?.lastName}
                                 <div className="post-details-article">
                                     <span>
-                                        January 23rd •{" "}
+                                        {/* January 23rd •{" "} */}
                                         {store?.store?.estimatedRead} min read{" "}
                                     </span>
                                     {/* <span className="listen-button-article">

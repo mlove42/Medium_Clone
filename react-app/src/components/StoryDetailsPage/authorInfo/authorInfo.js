@@ -46,44 +46,45 @@ const AuthorInfo = (store) => {
                 <div className="author-name-info">
                     {store?.store?.firstName} {store?.store?.lastName}
                 </div>
-                <div className="info-author-following">
+                {/* <div className="info-author-following">
                     2 followers (not dynamic yet)
-                </div>
+                </div> */}
                 <div>
-                    {userId === authorId ? (
-                        <div className="edit-delete-story-container">
-                            <div className="edit-story">
-                                <button
-                                    onClick={() =>
-                                        editStoryOnClick(store?.store?.id)
-                                    }
-                                >
-                                    Edit Story
-                                </button>
+                    {
+                        userId === authorId ? (
+                            <div className="edit-delete-story-container">
+                                <div className="edit-story">
+                                    <button
+                                        onClick={() =>
+                                            editStoryOnClick(store?.store?.id)
+                                        }
+                                    >
+                                        Edit Story
+                                    </button>
+                                </div>
+                                <div className="delete-story">
+                                    <button
+                                        onClick={() =>
+                                            deleteStoryOnClick(store?.store?.id)
+                                        }
+                                    >
+                                        Delete Story
+                                    </button>
+                                </div>
                             </div>
-                            <div className="delete-story">
-                                <button
-                                    onClick={() =>
-                                        deleteStoryOnClick(store?.store?.id)
-                                    }
-                                >
-                                    Delete Story
-                                </button>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="info-author-action">
-                            <button className="info-action-button">
-                                Follow
-                            </button>
-                            <button className="info-action-button">
-                                <MdMarkEmailUnread />
-                            </button>
-                        </div>
-                    )}
+                        ) : null
+                        // <div className="info-author-action">
+                        //     <button className="info-action-button">
+                        //         Follow
+                        //     </button>
+                        //     <button className="info-action-button">
+                        //         <MdMarkEmailUnread />
+                        //     </button>
+                        // </div>
+                    }
                 </div>
             </div>
-            <div className="author-bio-containers">
+            {/* <div className="author-bio-containers">
                 Husband-to-be, avid-reader, coffee liker, advocate of of the
                 Marvel Universe. Currently working on my App Academy capstone
                 project. (not dynamic yet)
@@ -92,7 +93,7 @@ const AuthorInfo = (store) => {
             <div className="info-folower-container">
                 <div className="info-follower-image">Picture</div>
                 <div className="info-following-name">Name</div>
-            </div>
+            </div> */}
         </div>
     );
 };

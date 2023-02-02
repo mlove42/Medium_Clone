@@ -4,11 +4,11 @@ def seed_comments():
     one = Comment(
         user_id=2,
         story_id=1, 
-        body='Why, what a moving story!'
+        body='Wow, what a moving story!'
     )
     two = Comment(
         user_id=1,
-        story_id=1, 
+        story_id=2, 
         body="I'm so proud of you"
     )
     three = Comment(
@@ -20,12 +20,33 @@ def seed_comments():
     four = Comment(
         user_id=4,
         story_id=1, 
-        body="First to comment"
+        body="You should write a book on this topic"
     )
     five = Comment(
         user_id=5,
-        story_id=1, 
-        body="I can't wait for part 2!!!"
+        story_id=3, 
+        body="Two thumbs up!"
+    )
+    six = Comment(
+        user_id=2,
+        story_id=2, 
+        body="You are truly gifted!"
+    )
+    seven = Comment(
+        user_id=3,
+        story_id=4, 
+        body="I would love to read more of your writings!"
+    )
+    eight = Comment(
+        user_id=2,
+        story_id=5, 
+        body="Awesome!"
+    )
+
+    eight = Comment(
+        user_id=4,
+        story_id=3, 
+        body="Best article I have read in a long time"
     )
 
 
@@ -34,6 +55,9 @@ def seed_comments():
     db.session.add(three)
     db.session.add(four)
     db.session.add(five)
+    db.session.add(six)
+    db.session.add(seven)
+    db.session.add(eight)
 
     db.session.commit()
 

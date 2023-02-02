@@ -7,11 +7,11 @@ const Banner = () => {
                 <div className="banner">
                     <h1 className="line1">Stay Curious.</h1>
                     <h3 className="line2">
-                        Discover stories, thinking, and experise from writers on
-                        any topic!
+                        Discover stories, thinking, and expertise from writers
+                        on any topic!
                     </h3>
 
-                    <button className="start-button">Start Reading</button>
+                    {/* <button className="start-button">Start Reading</button> */}
                 </div>
 
                 <div className="imageDiv">

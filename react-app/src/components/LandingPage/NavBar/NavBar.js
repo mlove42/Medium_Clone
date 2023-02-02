@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import logo from "../../../assets/logo.png";
 import { NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import LogoutButton from "../../auth/LogoutButton";
 import LoginFormModal from "../../modals/LoginFormModal/index";
 import SignUpFormModal from "../../modals/SignUpModal/index";
+import { login } from "../../../store/session";
 import Menu from "../../menu";
 import "./navbar.css";
 import { BsPencilSquare } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 const NavBar = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     // console.log(showMenu, "OPEN STATE");
     const sessionUser = useSelector((state) => state.session.user);
@@ -63,8 +65,8 @@ const NavBar = () => {
     } else {
         sessionLinks = (
             <div className="session-test">
-                <div className="story">Our Story</div>
-                <div className="membership">Membership</div>
+                {/* <div className="story">Our Story</div>
+                <div className="membership">Membership</div> */}
 
                 <div className="login-nav">
                     <LoginFormModal />
@@ -72,6 +74,19 @@ const NavBar = () => {
                 <div className="signup-nav">
                     <SignUpFormModal />
                 </div>
+                <button
+                    className="demo-user"
+                    onClick={async (e) => {
+                        const email = "thanos@aa.io";
+                        const password = "password";
+                        // history.push("/");
+
+                        const data = await dispatch(login(email, password));
+                        if (data) history.push("/");
+                    }}
+                >
+                    Demo User
+                </button>
             </div>
         );
     }

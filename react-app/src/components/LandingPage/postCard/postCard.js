@@ -51,12 +51,12 @@ const PostCard = () => {
                                 <div className="briefing">{story.brief}</div>
                             </div>
                             <div className="details-container">
-                                <span className="article-details">
+                                {/* <span className="article-details">
                                     June 15 • {story.estimatedRead} min read •{" "}
                                     <span className="category">
                                         productivity
                                     </span>
-                                </span>
+                                </span> */}
                             </div>
                         </div>
                         <div className="thumbnail-image">

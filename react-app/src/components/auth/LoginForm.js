@@ -37,7 +37,7 @@ const LoginForm = () => {
             onClick={(e) => e.stopPropagation()}
         >
             <div className="login-signup-form-container">
-                <header className="login-signup-header">Log in</header>
+                <header className="login-signup-header">Sign in</header>
                 <form className="login-signup-form" onSubmit={onLogin}>
                     <div>
                         {errors.map((error, ind) => (

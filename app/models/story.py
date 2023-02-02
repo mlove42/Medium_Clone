@@ -19,9 +19,9 @@ class Story(db.Model):
 
     story_author = db.relationship("User", back_populates="stories")
 
-    story_comment = db.relationship('Comment', back_populates="comment_story")
+    story_comment = db.relationship('Comment', back_populates="comment_story", cascade='all, delete')
 
-    likes = db.relationship("Like", back_populates="story", cascade='all, delete-orphan')
+    likes = db.relationship("Like", back_populates="story", cascade='all, delete-orphan' )
   
     
     def __repr__(self):

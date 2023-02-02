@@ -5,7 +5,7 @@ const Menu = () => {
     return (
         <div className="menu-container dropDownProfile">
             <ul className="bullets">
-                <li>Profile</li>
+                {/* <li>Profile</li> */}
 
                 <li>
                     <LogoutButton />

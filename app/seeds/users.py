@@ -18,7 +18,7 @@ ironman = User(
         username='ironman', email='ironman@aa.io', first_name="Tony", last_name="Stark", profile_pic="https://images.indianexpress.com/2021/08/what-if-episode-3-tony-stark-1200.jpg",
          password='password')
 thanos = User(
-        username='marti', email='thanos@aa.io', first_name="Thanos", last_name="Dione", profile_pic="https://www.looper.com/img/gallery/the-big-thanos-question-mcu-fans-have-about-what-if-episode-8/intro-1632963190.jpg",
+        username='thanos', email='thanos@aa.io', first_name="Thanos", last_name="Dione", profile_pic="https://www.looper.com/img/gallery/the-big-thanos-question-mcu-fans-have-about-what-if-episode-8/intro-1632963190.jpg",
          password='password')
 demo = User(
         username='demo', email='demo@aa.io', first_name="Demo", last_name="User",
