@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 import datetime
 class Story(db.Model):
@@ -15,7 +15,7 @@ class Story(db.Model):
     image = db.Column(db.String, nullable=True, default="https://archive.org/download/no-photo-available/no-photo-available.png")
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     story_author = db.relationship("User", back_populates="stories")
 
