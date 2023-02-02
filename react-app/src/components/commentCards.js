@@ -22,7 +22,7 @@ const CommentCards = () => {
     const comments = useSelector((state) => {
         return Object.values(state.comment);
     });
-    console.log(comments);
+    // console.log(comments);
     // const findId = useSelector((state) => {
     //     return state.comment;
     // });

@@ -36,8 +36,6 @@ export const editComment = (comment) => {
 //! thunk creators
 //  Create a comment for a Story based on the Story's id
 export const addNewComment = (storyId, commentData) => async (dispatch) => {
-    console.log(storyId, "<=== story ID");
-    console.log(commentData, "<==== comment DATA");
     const response = await fetch(`/api/story/${storyId}/comments`, {
         method: "POST",
         headers: {
@@ -75,8 +73,6 @@ export const deleteMyComment = (commentId) => async (dispatch) => {
 // Edit a Comment
 export const editMyComment =
     (commentId, editedCommentData) => async (dispatch) => {
-        console.log(commentId, "<==== comment ID");
-        console.log(editedCommentData, "<=== IN THE STORE");
         const response = await fetch(`/api/comments/${commentId}`, {
             method: "PUT",
             headers: {

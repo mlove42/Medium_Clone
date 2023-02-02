@@ -82,8 +82,6 @@ export const createStory = (storyData) => async (dispatch) => {
 };
 
 export const editStory = (storyId, storyData) => async (dispatch) => {
-    console.log(storyId, "STORE STORY ID");
-    console.log(storyData, "redux DATA being send to backend");
     const response = await fetch(`/api/story/${storyData.id}`, {
         method: "PUT",
         headers: {

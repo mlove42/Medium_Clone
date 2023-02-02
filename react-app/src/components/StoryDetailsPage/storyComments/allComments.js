@@ -38,7 +38,7 @@ const AllComments = () => {
         setEditState((editState) => !editState);
         // history.push(`/story/${storyId}`);
     };
-    console.log(commentId, "THIS IS THE COMMENT ID");
+    // console.log(commentId, "THIS IS THE COMMENT ID");
 
     const sessionUser = useSelector((state) => state.session.user);
     let userId = sessionUser && sessionUser.id;
@@ -90,10 +90,10 @@ const AllComments = () => {
                                         setEditState((editState) => !editState);
                                         setCommentId(comment.id);
                                         {
-                                            console.log(
-                                                comment.id,
-                                                "comment id ON CLIICK"
-                                            );
+                                            // console.log(
+                                            //     comment.id,
+                                            //     "comment id ON CLIICK"
+                                            // );
                                             // currentId = sessionUser.HUCK.find(
                                             //     (test) => test.id === comment.id
                                             // );

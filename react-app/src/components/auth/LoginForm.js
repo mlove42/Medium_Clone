@@ -15,10 +15,10 @@ const LoginForm = () => {
         const data = await dispatch(login(email, password));
         if (data) {
             setErrors(data);
-            console.log(data, "CAN I SEE THIS");
+            // console.log(data, "CAN I SEE THIS");
         }
     };
-    console.log(errors, "errors");
+    // console.log(errors, "errors");
     const updateEmail = (e) => {
         setEmail(e.target.value);
     };

@@ -28,14 +28,15 @@ const SignUpForm = () => {
                     repeatPassword
                 )
             );
-            console.log(password, "PASSWORD-SIGN UP FORM ");
-            console.log(repeatPassword, "CONFIRM SIGN UP FORM ");
-            setLoad((prev) => !prev);
+            // console.log(password, "PASSWORD-SIGN UP FORM ");
+            // console.log(repeatPassword, "CONFIRM SIGN UP FORM ");
+
             if (data) {
                 setErrors(data);
-                console.log(data, "this is data");
+                // console.log(data, "this is data");
             }
         }
+        setLoad((prev) => !prev);
     };
     const updateFirstName = (e) => {
         setFirstName(e.target.value);

@@ -111,9 +111,9 @@ const SideBar = () => {
                                                 </div>
                                             </div>
 
-                                            <div className="review-ratings">
+                                            {/* <div className="review-ratings">
                                                 <BsThreeDots />
-                                            </div>
+                                            </div> */}
                                         </div>
                                         <div className="comment-section">
                                             <div className="client-comment">
