@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
+    biography = db.Column(db.String(355), nullable=False)
     profile_pic = db.Column(db.String(255), nullable=False, default="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png")
     hashed_password = db.Column(db.String(255), nullable=False)
 
@@ -45,6 +46,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'stories': [story.to_dict_all() for story in self.stories],
             "picture": self.profile_pic, 
+            "biography": self.biography,
             'firstName': self.first_name,
             "lastName": self.last_name,
             "likes": [likes.to_dict() for likes in self.liked_stories]
@@ -58,5 +60,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'firstName': self.first_name,
             "lastName": self.last_name, 
-            "picture": self.profile_pic 
+            "picture": self.profile_pic, 
+            "biography": self.biography,
         }

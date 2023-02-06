@@ -38,6 +38,7 @@ class Story(db.Model):
             "firstName": self.story_author.to_dict_basic()["firstName"],
             "lastName": self.story_author.to_dict_basic()['lastName'],
             "picture":self.story_author.to_dict_basic()['picture'],
+            "biography":self.story_author.to_dict_basic()['biography'],
             "title": self.title,
             "body": self.body,
             "brief": self.brief,

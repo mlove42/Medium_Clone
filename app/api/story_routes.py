@@ -40,6 +40,7 @@ def create_new_story():
         brief = form.data['brief'],
         estimated_read = form.data['estimated_read'],
         image = form.data['image']
+       
         )
    
         db.session.add(new_story)
@@ -74,6 +75,7 @@ def edit_story(id):
         story.brief = form.data['brief']
         story.estimated_read = form.data['estimated_read']
         story.image = form.data['image']
+        
 
         db.session.commit()
 
