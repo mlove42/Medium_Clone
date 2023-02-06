@@ -8,6 +8,7 @@ comment_route = Blueprint('comments', __name__)
 
 #Edit a comment 
 @comment_route.route('/<int:id>', methods=['PUT'])
+@login_required
 def updateComment(id):
 
     form = CommentForm()
@@ -22,6 +23,7 @@ def updateComment(id):
 
 # Delete your comment 
 @comment_route.route('/<int:id>', methods=['DELETE'])
+
 def deleteComment(id):
     deleteComment = Comment.query.get(id)
 

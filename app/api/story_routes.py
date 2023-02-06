@@ -25,6 +25,7 @@ def get_all_stories():
    
 # Create a story
 @story_routes.route("", methods=["POST"])
+@login_required
 def create_new_story():
     current_user_id = int(current_user.get_id())
     stories = Story.query.all()
@@ -45,10 +46,11 @@ def create_new_story():
         db.session.commit()
         return new_story.to_dict()
     return {"errors": validation_errors(form.errors)}, 401
-        # return {story.id: story.to_dict() for story in stories}
+      
 
 #Get a Story by its story ID
 @story_routes.route('/<int:id>')
+@login_required
 def get_story_by_id(id):
 
     story = Story.query.get(id)
@@ -80,7 +82,6 @@ def edit_story(id):
 
 # Delete a story
 @story_routes.route('/<int:id>', methods=["DELETE"])
-@login_required
 def delete_story(id):
     data = request.json
     story_delete = Story.query.get(id)
@@ -93,6 +94,7 @@ def delete_story(id):
 
 #Get Comments Route
 @story_routes.route('/<int:id>/comments')
+
 def storyComments(id):
     comments = Comment.query.filter(Comment.story_id == id).all()
 
@@ -100,8 +102,7 @@ def storyComments(id):
 
 
 @story_routes.route('/<int:id>/comments', methods=['POST'])
-@login_required
-def postReview(id):
+def postComment(id):
     current_user_id = int(current_user.get_id())
     form = CommentForm()
     comment = Comment(
@@ -114,3 +115,32 @@ def postReview(id):
     db.session.add(comment)
     db.session.commit()
     return comment.to_dict()
+
+
+#Likes CRUD
+
+@story_routes.route("/<int:story_id>/likes")
+@login_required
+def likes_by_id(story_id):
+    likes = Like.query.filter(Like.story_id == story_id).all()
+    return {like.id: like.to_dict() for like in likes}
+
+
+@story_routes.route("/<int:story_id>/likes", methods=["POST"])
+@login_required
+def like_unlike(story_id):
+    current_user_id = int(current_user.get_id())
+    like = Like.query.filter(Like.user_id == current_user_id, Like.story_id == story_id).first()
+    if like:
+        db.session.delete(like)
+        db.session.commit()
+        return {"status": "deleted", "story_id": story_id, "like_id": like.id}
+    else:
+        like = Like(
+        user_id=current_user_id,
+        story_id=story_id
+        )
+   
+        db.session.add(like)
+        db.session.commit()
+        return like.to_dict()

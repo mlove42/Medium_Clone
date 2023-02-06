@@ -73,6 +73,7 @@ const MainArticle = (store) => {
                     <div className="body-article-main">
                         {store?.store?.body}
                     </div>
+
                     {/* <button onClick={handleOpenSideBar}>Open SideBar</button> */}
                     <div>
                         <SideBar />

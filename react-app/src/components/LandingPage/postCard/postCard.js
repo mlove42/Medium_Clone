@@ -5,6 +5,7 @@ import { NavLink, useHistory, Link, History } from "react-router-dom";
 // import { getStories } from "../../store/story";
 import { getStories, getStoryById } from "../../../store/story";
 import { getSelectedStoryComments } from "../../../store/comment";
+import { loadLikesByStoryId } from "../../../store/likes";
 import "./postCard.css";
 const PostCard = () => {
     const history = useHistory();
@@ -45,6 +46,7 @@ const PostCard = () => {
                                     dispatch(
                                         getSelectedStoryComments(story.id)
                                     );
+                                    dispatch(loadLikesByStoryId(story.id));
                                 }}
                             >
                                 <h3 className="title-home">{story.title}</h3>

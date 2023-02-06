@@ -36,6 +36,7 @@ export const editComment = (comment) => {
 //! thunk creators
 //  Create a comment for a Story based on the Story's id
 export const addNewComment = (storyId, commentData) => async (dispatch) => {
+    console.log(commentData, "WHAT IS THIS FORMAT FOR THE COMMENT");
     const response = await fetch(`/api/story/${storyId}/comments`, {
         method: "POST",
         headers: {

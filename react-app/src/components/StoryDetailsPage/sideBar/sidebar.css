@@ -82,12 +82,50 @@ li:hover {
     }
 }
 
-.icon-comment {
+.two-icons {
     /* border: solid red; */
+    display: flex;
     margin-top: 1rem;
+    /* border: solid purple; */
+    font-size: 42px;
+}
+.like-icon {
+    /* border: solid green; */
+    position: relative;
+    margin: 15px;
+    width: 40px;
+    height: 70px;
+    line-height: 84px;
+    margin-right: -10px;
+}
+.likes-number {
+    /* position: absolute; */
+    position: relative;
+    /* display: flex; */
+    /* border: solid brown; */
+    /* margin: 15px;
+    margin-top: 1.5rem;
+    width: 70px;
+    height: 50px; */
+    /* height: 1rem;
+    margin-top: -2rem;
+    top: 56rem;
+    margin-top: 5px; */
+    /* height: 10px; */
+    /* margin-top: 90px; */
+    /* margin-right: 60px; */
+    /* line-height: 94px; */
+    /* margin-top: 80px; */
+    margin-top: -2rem;
+    font-size: 20px;
+}
+.icon-comment {
+    /* border: solid purple; */
+    /* border: solid red; */
+    /* margin-top: 1rem; */
     /* font-size: 2rem; */
-    font-size: 36px;
-    display: inline-block;
+    /* font-size: 36px; */
+    /* display: inline-block; */
     cursor: pointer;
     margin: 15px;
     width: 70px;

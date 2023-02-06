@@ -21,7 +21,7 @@ class Story(db.Model):
 
     story_comment = db.relationship('Comment', back_populates="comment_story", cascade='all, delete')
 
-    likes = db.relationship("Like", back_populates="story", cascade='all, delete-orphan' )
+    liked_by_users = db.relationship("Like", back_populates="story", cascade='all, delete' )
   
     
     def __repr__(self):
@@ -43,7 +43,8 @@ class Story(db.Model):
             "brief": self.brief,
             "estimatedRead": self.estimated_read,
             "storyImage": self.image,
-            "date": self.created_at
+            "date": self.created_at,
+            'likes': [like.to_dict() for like in self.liked_by_users],
         }
    
     def to_dict_all(self):
@@ -57,9 +58,8 @@ class Story(db.Model):
             "brief": self.brief,
             "estimatedRead": self.estimated_read,
             "image": self.image,
-            # 'likes': [like.to_dict() for like in self.likes],
-            # "comments": [comments.to_dict() for comments in self.story_comment],
-            # "huckId": self.story_comment.to_dict()['id']
+            'likes': [like.to_dict() for like in self.liked_by_users],
+        
         }
 
     def to_dict(self):
@@ -71,13 +71,7 @@ class Story(db.Model):
             "brief": self.brief,
             "estimatedRead": self.estimated_read,
             "image": self.image,
-            
-
-            # "lastName":self.comment_owner.to_dict_basic()['lastName'],
-
-       
-
-        
+ 
         }
     
     def to_dict_basic(self):
@@ -86,9 +80,7 @@ class Story(db.Model):
             "userId": self.user_id,
             "title": self.title,
             "body": self.body, 
-       
-
-        
+   
         }
 
    

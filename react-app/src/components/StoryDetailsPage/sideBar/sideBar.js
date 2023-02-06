@@ -14,17 +14,37 @@ import "./commentCards.css";
 import { IoCloseSharp } from "react-icons";
 import "./sidebar.css";
 import { IoClose } from "react-icons/io5";
-import { BsThreeDots } from "react-icons/bs";
+
 import { FaRegComment } from "react-icons/fa";
+import { BiLike } from "react-icons/bi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 import EditComment from "../../forms/EditCommentForm";
 import PostComment from "../../forms/CreateCommentForm";
+import {
+    deleteLikeThunk,
+    likeAStory,
+    loadLikesByStoryId,
+} from "../../../store/likes";
 
 const SideBar = () => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
+    const story = useSelector((state) => state);
 
     const sessionUser = useSelector((state) => state.session.user);
-    // console.log(sessionUser, "user info");
+    const likesLength = Object.values(story.likes).length;
+    console.log(sessionUser.id);
+    const likes = Object.values(useSelector((state) => state.likes));
+    const test = useSelector((state) => state.likes);
+    // console.log(test[sessionUser.id], "test the water LIKES");
+
+    const userLikes = likes.filter(
+        (like) => like.userId === sessionUser.id
+    ).length;
+
+    console.log(userLikes, "USER LIKES");
+
     const comments = useSelector((state) => {
         return Object.values(state.comment);
     });
@@ -42,6 +62,13 @@ const SideBar = () => {
     const handleCloseSideBar = () => {
         setOpen(false);
     };
+
+    const handleClick = async () => {
+        dispatch(likeAStory(storyId)).then(() =>
+            dispatch(loadLikesByStoryId(storyId))
+        );
+    };
+
     //////////////////////////////////////////////////////////////////
     const [editState, setEditState] = useState(false);
     let userId = sessionUser && sessionUser.id;
@@ -74,6 +101,7 @@ const SideBar = () => {
     useEffect(() => {
         dispatch(getStoryById(storyId));
         dispatch(getSelectedStoryComments(storyId));
+        dispatch(loadLikesByStoryId(storyId));
     }, [dispatch, actionToggled]);
 
     return (
@@ -233,9 +261,29 @@ const SideBar = () => {
                     </div>
                 )}
             </div>
+            <div className="two-icons">
+                <div className="like-icon" onClick={() => handleClick()}>
+                    {userLikes === 0 ? (
+                        <i>
+                            <AiOutlineHeart style={{ color: "black" }} />
+                        </i>
+                    ) : (
+                        <i>
+                            <AiFillHeart style={{ color: "red" }} />
+                        </i>
+                    )}
+                </div>
 
-            <div className="icon-comment" onClick={handleOpenSideBar}>
-                <FaRegComment />
+                <div className="icon-comment" onClick={handleOpenSideBar}>
+                    <FaRegComment />
+                </div>
+            </div>
+            <div>
+                {likesLength === 0 ? null : (
+                    <p className="likes-number">
+                        Likes{""} {likesLength}{" "}
+                    </p>
+                )}
             </div>
         </>
     );

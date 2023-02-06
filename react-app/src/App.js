@@ -58,9 +58,9 @@ function App() {
                     <EditStory />
                 </ProtectedRoute>
 
-                <ProtectedRoute path="/users/:userId" exact={true}>
-                    <User />
-                </ProtectedRoute>
+                {/* <ProtectedRoute path="/users/:userId" exact={true}>
+                    <User /> */}
+                {/* </ProtectedRoute> */}
                 <ProtectedRoute path="/story" exact={true}>
                     <CreateStory />
                 </ProtectedRoute>

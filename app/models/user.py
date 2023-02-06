@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     
     stories = db.relationship("Story", back_populates="story_author", cascade='all, delete')
     comment = db.relationship("Comment", back_populates="comment_owner")
-    likes = db.relationship('Like', back_populates="user")
+    liked_stories = db.relationship('Like', back_populates="user")
 
 
     @property
@@ -44,13 +44,10 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'stories': [story.to_dict_all() for story in self.stories],
-            'HUCK': [comment.to_dict() for comment in self.comment],
             "picture": self.profile_pic, 
             'firstName': self.first_name,
             "lastName": self.last_name,
-            #   "YESSIR": [test.to_dict() for test in self.comment],
-         
-       
+            "likes": [likes.to_dict() for likes in self.liked_stories]
         }
 
 

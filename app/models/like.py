@@ -13,8 +13,8 @@ class Like(db.Model):
   story_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("stories.id")), nullable=True)
   
 
-  user = db.relationship('User', back_populates="likes")
-  story = db.relationship('Story', back_populates="likes", foreign_keys=[story_id])
+  user = db.relationship('User', back_populates="liked_stories", )
+  story = db.relationship('Story', back_populates="liked_by_users")
 
   def __repr__(self):
         return f"<like id: {self.id}, userId: {self.user_id}, storyId: {self.story_id}"
@@ -23,7 +23,8 @@ class Like(db.Model):
         return {
             "id": self.id,
             "userId": self.user_id,
-            "storyId": self.story_id
+            "storyId": self.story_id,
+      
         }
 
 
