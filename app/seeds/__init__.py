@@ -4,7 +4,7 @@ from .stories import seed_stories, undo_stories
 from .likes import seed_likes, undo_likes
 from .comments import seed_comments, undo_comments
 from app.models.db import db, environment, SCHEMA
-
+from .follow import undo_follows
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -18,6 +18,7 @@ def seed():
         # command, which will  truncate all tables prefixed with 
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        undo_follows()
         undo_likes()
         undo_comments()
         undo_stories()
@@ -32,6 +33,7 @@ def seed():
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+    undo_follows()
     undo_likes()
     undo_comments()
     undo_stories()

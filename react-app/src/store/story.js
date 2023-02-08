@@ -115,9 +115,10 @@ export default function storyReducer(state = {}, action) {
     const newState = { ...state };
     switch (action.type) {
         case LOAD_STORIES:
-            return action.stories;
+            return { ...newState, ...action.stories };
+
         case GET_STORY_BY_ID:
-            return action.story;
+            return { ...newState, [action.story.id]: action.story };
         case GET_MY_STORY:
             return action.stories;
         case ADD_STORY:

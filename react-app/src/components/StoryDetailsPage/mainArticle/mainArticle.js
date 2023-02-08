@@ -19,7 +19,7 @@ const MainArticle = (store) => {
     const { storyId } = useParams();
 
     useEffect(() => {
-        dispatch(getStoryById(storyId));
+        // dispatch(getStoryById(storyId));
     }, [dispatch]);
 
     return (

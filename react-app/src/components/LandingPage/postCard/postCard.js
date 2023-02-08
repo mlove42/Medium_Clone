@@ -6,6 +6,7 @@ import { NavLink, useHistory, Link, History } from "react-router-dom";
 import { getStories, getStoryById } from "../../../store/story";
 import { getSelectedStoryComments } from "../../../store/comment";
 import { loadLikesByStoryId } from "../../../store/likes";
+import { getUserId } from "../../../store/follow";
 import "./postCard.css";
 const PostCard = () => {
     const history = useHistory();
@@ -14,8 +15,10 @@ const PostCard = () => {
     const stories = useSelector((store) => {
         return Object.values(store.story);
     });
-    // console.log(stories, "STORIES INFO");
 
+    // console.log(stories, "WHAT ARE STORIES");
+    // console.log(stories, "STORIES INFO");
+    // console.log(stories, "THIS ARE THE STORIES");
     useEffect(() => {
         dispatch(getStories());
     }, [dispatch]);
@@ -47,6 +50,7 @@ const PostCard = () => {
                                         getSelectedStoryComments(story.id)
                                     );
                                     dispatch(loadLikesByStoryId(story.id));
+                                    dispatch(getUserId(story.id));
                                 }}
                             >
                                 <h3 className="title-home">{story.title}</h3>

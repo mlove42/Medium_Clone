@@ -13,8 +13,8 @@ const CommentCards = () => {
     const { storyId } = useParams();
 
     useEffect(() => {
-        dispatch(getStoryById(storyId));
-        dispatch(getSelectedStoryComments(storyId));
+        // dispatch(getStoryById(storyId));
+        // dispatch(getSelectedStoryComments(storyId));
     }, [dispatch, storyId]);
 
     const sessionUser = useSelector((state) => state.session.user);

@@ -8,9 +8,9 @@ def seed_likes():
     like2 = Like(
         user_id=1, story_id=2)
     like3 = Like(
-        user_id=2, story_id=1)
+        user_id=4, story_id=1)
     like4 = Like(
-        user_id=2, story_id=2)
+        user_id=5, story_id=2)
     like5 = Like(
         user_id=3, story_id=1)
     like6 = Like(

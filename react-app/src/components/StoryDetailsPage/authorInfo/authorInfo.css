@@ -91,7 +91,27 @@
     /* padding-left: 3px; */
     padding: 0.6rem;
 }
+.info-action-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    /* border: solid black; */
+}
 
+.info-action-button-unfollow {
+    border: none;
+
+    background-color: red;
+    color: white;
+    border-radius: 9999px;
+
+    padding: 0.6rem;
+}
+
+.info-action-button-unfollow:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    /* border: solid black; */
+}
 .author-bio-containers {
     /* border: solid red; */
     margin-top: 15px;

@@ -8,18 +8,21 @@ import MainArticle from "./mainArticle/mainArticle";
 
 import "./viewStory.css";
 import AllComments from "./storyComments/allComments";
+import { getUserId, getUserById } from "../../store/follow";
 const ViewStory = () => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
     const history = useHistory();
     const data = useSelector((store) => {
-        return store.story;
+        return store.story[storyId];
     });
+
     useEffect(() => {
-        dispatch(getStoryById(storyId));
+        // console.log(data, "DATA");
+        if (!data) dispatch(getStoryById(storyId));
+        if (!data) dispatch(getUserId(storyId));
     }, [dispatch]);
 
-    // console.log(store, "VIEW STORY ");
     return (
         <>
             <StoryHeader />

@@ -31,10 +31,13 @@ const SideBar = () => {
     const dispatch = useDispatch();
     const { storyId } = useParams();
     const story = useSelector((state) => state);
-
+    // console.log(story, "STATE");
+    let userId = story.story.UserId;
+    const storyUserId = story.story.userId;
+    // console.log(storyUserId, "USER ID");
     const sessionUser = useSelector((state) => state.session.user);
     const likesLength = Object.values(story.likes).length;
-    console.log(sessionUser.id);
+
     const likes = Object.values(useSelector((state) => state.likes));
     const test = useSelector((state) => state.likes);
     // console.log(test[sessionUser.id], "test the water LIKES");
@@ -43,7 +46,7 @@ const SideBar = () => {
         (like) => like.userId === sessionUser.id
     ).length;
 
-    console.log(userLikes, "USER LIKES");
+    // console.log(userLikes, "USER LIKES");
 
     const comments = useSelector((state) => {
         return Object.values(state.comment);
@@ -71,7 +74,7 @@ const SideBar = () => {
 
     //////////////////////////////////////////////////////////////////
     const [editState, setEditState] = useState(false);
-    let userId = sessionUser && sessionUser.id;
+    let currentUserId = sessionUser && sessionUser.id;
     const [commentId, setCommentId] = useState("");
     const comment = useSelector((state) => state?.comment[commentId]);
     const [body, setBody] = useState("");
@@ -99,7 +102,7 @@ const SideBar = () => {
     }
 
     useEffect(() => {
-        dispatch(getStoryById(storyId));
+        // dispatch(getStoryById(storyId));
         dispatch(getSelectedStoryComments(storyId));
         dispatch(loadLikesByStoryId(storyId));
     }, [dispatch, actionToggled]);
@@ -147,7 +150,8 @@ const SideBar = () => {
                                             <div className="client-comment">
                                                 {commentId === comment.id ? (
                                                     editState === true &&
-                                                    userId == comment.userId &&
+                                                    currentUserId ==
+                                                        comment.userId &&
                                                     comment.id ===
                                                         findId(commentId) ? (
                                                         <form
@@ -201,7 +205,7 @@ const SideBar = () => {
                                                 )}
                                             </div>
                                         </div>
-                                        {userId == comment.userId &&
+                                        {currentUserId == comment.userId &&
                                         !editState ? (
                                             <div className="button-containers">
                                                 <div className="comment-update">
@@ -231,11 +235,11 @@ const SideBar = () => {
                                                             //     comment.id,
                                                             //     "DELETE COMMENT FUNCT"
                                                             // );
-                                                            dispatch(
-                                                                getStoryById(
-                                                                    storyId
-                                                                )
-                                                            );
+                                                            // dispatch(
+                                                            //     getStoryById(
+                                                            //         storyId
+                                                            //     )
+                                                            // );
                                                             dispatch(
                                                                 getSelectedStoryComments(
                                                                     storyId

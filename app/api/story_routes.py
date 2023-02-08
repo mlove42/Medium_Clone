@@ -49,13 +49,17 @@ def create_new_story():
     return {"errors": validation_errors(form.errors)}, 401
       
 
+
 #Get a Story by its story ID
 @story_routes.route('/<int:id>')
-@login_required
-def get_story_by_id(id):
+# @login_required
+def get(id):
 
     story = Story.query.get(id)
-
+   
+  
+   
+   
     return story.to_dict_home_page()
     
 

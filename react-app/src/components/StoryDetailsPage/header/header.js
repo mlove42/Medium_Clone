@@ -34,7 +34,7 @@ const StoryHeader = () => {
     }, [showMenu]);
 
     useEffect(() => {
-        dispatch(getStoryById(storyId));
+        // dispatch(getStoryById(storyId));
     }, [dispatch]);
     // console.log(author.author, "header");
     return (

@@ -46,6 +46,7 @@ class Story(db.Model):
             "storyImage": self.image,
             "date": self.created_at,
             'likes': [like.to_dict() for like in self.liked_by_users],
+            
         }
    
     def to_dict_all(self):

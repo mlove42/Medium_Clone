@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import "./index.css";
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import { getUserId } from "../../../store/follow";
 import {
     createStory,
     getStories,
@@ -17,14 +17,15 @@ const EditStory = () => {
     const history = useHistory();
 
     const { storyId } = useParams();
-    const story = useSelector((store) => store.story);
-
+    console.log(storyId, "edit form STORY ID");
+    const story = useSelector((store) => store.story[storyId]);
+    console.log(story, "edit form STORY");
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState(story?.title);
     const [body, setBody] = useState(story?.body);
     const [brief, setBrief] = useState(story?.brief);
-    const [estimated_read, setEstimatedRead] = useState(story.estimatedRead);
-    const [image, setImage] = useState(story.storyImage);
+    const [estimated_read, setEstimatedRead] = useState(story?.estimatedRead);
+    const [image, setImage] = useState(story?.storyImage);
     const [load, setLoad] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -51,10 +52,8 @@ const EditStory = () => {
                 history.push(`/story/${storyId}`);
             }
         }
-    };
-    useEffect(() => {
         dispatch(getStoryById(storyId));
-    }, [dispatch]);
+    };
 
     return (
         <>

@@ -4,11 +4,13 @@ import sessionReducer from "./session";
 import storyReducer from "./story";
 import commentsReducer from "./comment";
 import likesReducer from "./likes";
+import followReducer from "./follow";
 const rootReducer = combineReducers({
     session: sessionReducer,
     story: storyReducer,
     comment: commentsReducer,
     likes: likesReducer,
+    author: followReducer,
 });
 
 let enhancer;

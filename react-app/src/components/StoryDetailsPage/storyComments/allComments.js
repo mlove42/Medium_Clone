@@ -23,7 +23,7 @@ const AllComments = () => {
     const [body, setBody] = useState(comment?.body);
     // console.log(editState, "EDIT STATE");
     useEffect(() => {
-        dispatch(getStoryById(storyId));
+        // dispatch(getStoryById(storyId));
         dispatch(getSelectedStoryComments(storyId));
     }, [dispatch, storyId]);
 
@@ -57,7 +57,7 @@ const AllComments = () => {
 
     const deleteComment = () => {
         dispatch(deleteMyComment(userComment[0]?.id));
-        dispatch(getStoryById(storyId));
+        //
         dispatch(getSelectedStoryComments(storyId));
 
         history.push(`/story/${storyId}`);
