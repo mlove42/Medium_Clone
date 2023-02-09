@@ -92,7 +92,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className="wrapper">
+        <div className="wrapper jack">
             <div className="content">
                 <div className="logoContainer">
                     <NavLink exact to="/">

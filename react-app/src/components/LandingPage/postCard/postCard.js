@@ -49,7 +49,8 @@ const PostCard = () => {
                                     dispatch(
                                         getSelectedStoryComments(story.id)
                                     );
-                                    dispatch(loadLikesByStoryId(story.id));
+                                    if (!story.id)
+                                        dispatch(loadLikesByStoryId(story?.id));
                                     dispatch(getUserId(story.id));
                                 }}
                             >

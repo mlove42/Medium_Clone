@@ -1,13 +1,16 @@
 .banner-Wrapper {
     /* margin-top: 500px; */
-    border: solid green;
+    border-bottom: solid black;
+    border-top: solid black;
+    border-top-width: 0.5px;
     display: flex;
     justify-content: center;
     margin-left: -10px;
     margin-right: -10px;
     align-items: center;
     background: #fcc017;
-    border-color: #000000;
+
+    /* border-color: #000000; */
 }
 .content-banner {
     /* border: solid yellow; */

@@ -38,6 +38,7 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route path="/login" exact={true}>
+                    <NavBar />
                     <LoginForm />
                 </Route>
 
