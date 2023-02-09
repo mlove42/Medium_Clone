@@ -1,0 +1,13 @@
+.user-home {
+    border-right: solid gray;
+    display: flex;
+    /* margin-top: 5rem; */
+    padding-top: 8rem;
+    padding-right: 2rem;
+}
+
+.user-info {
+    margin-left: 5rem;
+    width: 20rem;
+    margin-top: 5rem;
+}

@@ -18,6 +18,7 @@ import EditComment from "./components/forms/EditCommentForm";
 import CommentCards from "./components/commentCards";
 import Menu from "./components/menu";
 import { authenticate } from "./store/session";
+import MainPage from "./components/user_home/main_page";
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -69,8 +70,11 @@ function App() {
                     <ViewStory />
                 </ProtectedRoute>
                 <Route path="/" exact={true}>
-                    <NavBar />
+                    {/* <NavBar /> */}
                     <AllStories />
+                </Route>
+                <Route path="/test" exact={true}>
+                    <MainPage />
                 </Route>
                 {/* <Route path="/story/:storyId/sidebar" exact={true}>
                     <NavBar />
