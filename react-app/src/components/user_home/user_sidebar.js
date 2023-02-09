@@ -14,7 +14,7 @@ const UserInfo = (store) => {
 
     const history = useHistory();
     const sessionUser = useSelector((state) => state?.session?.user);
-    console.log(sessionUser, "THIS IS STATE");
+    // console.log(sessionUser, "THIS IS STATE");
 
     return (
         <div className="author-info-wrapper">
@@ -29,8 +29,12 @@ const UserInfo = (store) => {
                     {sessionUser?.firstName} {sessionUser?.lastName}
                 </div>
                 <div className="info-author-following">
-                    <div>Followers: {sessionUser?.followers?.length} </div>
-                    <div>Following: {sessionUser?.following?.length}</div>
+                    <div className="followers">
+                        Followers: {sessionUser?.followers?.length}{" "}
+                    </div>
+                    <div className="following">
+                        Following: {sessionUser?.following?.length}
+                    </div>
                 </div>
             </div>
         </div>

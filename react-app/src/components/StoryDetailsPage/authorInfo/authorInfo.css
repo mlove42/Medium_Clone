@@ -74,7 +74,18 @@
 }
 
 .info-author-following {
+    display: flex;
+
+    padding-bottom: 6px;
     color: #787878;
+}
+
+.followers {
+    padding: 4px;
+}
+
+.following {
+    padding: 4px;
 }
 
 .info-author-action {

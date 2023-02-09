@@ -41,7 +41,7 @@ export const follow = (payload) => async (dispatch) => {
         body: JSON.stringify({ user_id: payload }),
     });
     const data = await res.json();
-
+    console.log(data, "FOLLOW DATA");
     if (res.ok) {
         await dispatch(followActionCreator(data.user));
     } else {

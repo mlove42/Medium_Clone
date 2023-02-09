@@ -58,8 +58,12 @@ const AuthorInfo = (store) => {
                     {author?.firstName} {author?.lastName}
                 </div>
                 <div className="info-author-following">
-                    <div>Followers: {author?.followers?.length} </div>
-                    <div>Following: {author?.following?.length}</div>
+                    <div className="followers">
+                        Followers: {author?.followers?.length}{" "}
+                    </div>
+                    <div className="following">
+                        Following: {author?.following?.length}
+                    </div>
                 </div>
                 <div>
                     {currentUser.id === authorId ? (

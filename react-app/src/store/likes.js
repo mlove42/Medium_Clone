@@ -30,7 +30,7 @@ export const loadLikesByStoryId = (storyId) => async (dispatch) => {
 };
 
 export const likeAStory = (storyId) => async (dispatch) => {
-    console.log(storyId, "story id thunk ");
+    // console.log(storyId, "story id thunk ");
 
     const response = await fetch(`/api/story/${storyId}/likes`, {
         method: "POST",
@@ -45,6 +45,7 @@ export const likeAStory = (storyId) => async (dispatch) => {
         if (data.status === "deleted") {
             dispatch(deleteLike(data.id));
         } else {
+            // console.log(data, "THIS IS THE THUNK DATA");
             dispatch(add(data));
         }
 
@@ -60,7 +61,8 @@ const likesReducer = (state = initialState, action) => {
         case LOAD_LIKES:
             return action.likes;
         case ADD_LIKE:
-            return (newState[action.like.id] = action.like);
+            newState[action.like.id] = action.like;
+            return newState;
 
         case DELETE_LIKE:
             return Object.assign({}, newState, action.storyId);

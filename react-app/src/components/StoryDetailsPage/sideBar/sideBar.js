@@ -37,7 +37,7 @@ const SideBar = () => {
     // console.log(storyUserId, "USER ID");
     const sessionUser = useSelector((state) => state.session.user);
     const likesLength = Object.values(story.likes).length;
-
+    // console.log(likesLength, "likes Length");
     const likes = Object.values(useSelector((state) => state.likes));
     const test = useSelector((state) => state.likes);
     // console.log(test[sessionUser.id], "test the water LIKES");
