@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 // import SignUpForm from "./components/auth/SignUpForm";
@@ -19,9 +19,10 @@ import CommentCards from "./components/commentCards";
 import Menu from "./components/menu";
 import { authenticate } from "./store/session";
 import MainPage from "./components/user_home/main_page";
-
+import Footer from "./components/footer/footer";
 function App() {
     const [loaded, setLoaded] = useState(false);
+    const location = useLocation();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -70,21 +71,10 @@ function App() {
                     <ViewStory />
                 </ProtectedRoute>
                 <Route path="/" exact={true}>
-                    {/* <NavBar /> */}
                     <AllStories />
                 </Route>
-                <Route path="/test" exact={true}>
-                    <MainPage />
-                </Route>
-                {/* <Route path="/story/:storyId/sidebar" exact={true}>
-                    <NavBar />
-                    <SideBar />
-                </Route> */}
-                <Route path="/menu" exact={true}>
-                    <NavBar />
-                    <Menu />
-                </Route>
             </Switch>
+            <Footer />
         </BrowserRouter>
     );
 }
