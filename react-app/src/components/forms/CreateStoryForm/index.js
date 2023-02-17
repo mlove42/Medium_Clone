@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./index.css";
 import "../error.css";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createStory, getStories } from "../../../store/story";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 // import { addNewSpot } from "../../../store/spotsReducer";
 
 const CreateStory = () => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const quillRef = useRef();
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
@@ -18,12 +21,15 @@ const CreateStory = () => {
     const [estimated_read, setEstimatedRead] = useState("");
     const [image, setImage] = useState("");
     const [load, setLoad] = useState(false);
+    const [formattedContent, setFormattedContent] = useState("");
+    const [plainTextContent, setPlainTextContent] = useState("");
     const handleSubmit = async (e) => {
         // let data;
         e.preventDefault();
+        const plainTextContent = quillRef.current.getEditor().getText();
         const newStory = {
             title,
-            body,
+            body: plainTextContent, // save the plain text content as the body
             brief,
             estimated_read,
             image,
@@ -32,8 +38,6 @@ const CreateStory = () => {
 
         if (data) {
             setErrors(data);
-            // console.log(data, "CAN I SEE THIS");
-            // console.log(data.length, "WHAT IS THIS LENGTH");
         }
 
         setLoad((prev) => !prev);
@@ -42,6 +46,12 @@ const CreateStory = () => {
             history.push("/");
         }
         // setLoad((prev) => !prev);
+        setFormattedContent(plainTextContent);
+    };
+
+    const handleChange = (value) => {
+        setBody(value);
+        setPlainTextContent(quillRef.current?.innerText);
     };
 
     return (
@@ -122,18 +132,19 @@ const CreateStory = () => {
                                 <span className="field-title">
                                     Article Text
                                 </span>
-                                <span className="input-container-story">
-                                    <textarea
-                                        type="text"
+                                <div className="input-container-story">
+                                    <ReactQuill
                                         className="input-field-story"
                                         placeholder="Enter text here"
-                                        rows={24}
-                                        // required
-                                        onChange={(e) =>
-                                            setBody(e.target.value)
-                                        }
+                                        value={body}
+                                        onChange={handleChange}
+                                        theme="snow"
+                                        ref={quillRef}
                                     />
-                                </span>
+                                    <div className="input-field-story">
+                                        {formattedContent}
+                                    </div>
+                                </div>
                             </div>
                             <div className="error-messages">
                                 {errors?.map((error, ind) => (
