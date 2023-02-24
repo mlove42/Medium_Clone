@@ -99,7 +99,6 @@
     margin-top: 1rem;
 }
 .play {
-    /* border: solid blue; */
     display: flex;
 
     flex-direction: column;
@@ -108,4 +107,8 @@
 
 .signup-form-height {
     height: 490px !important;
+}
+
+.ql-container .ql-editor {
+    height: 100vh;
 }

@@ -81,7 +81,6 @@ a {
     align-items: center;
 }
 .name-user {
-    /* border: solid blue; */
     display: flex;
     align-items: center;
     flex-direction: column;

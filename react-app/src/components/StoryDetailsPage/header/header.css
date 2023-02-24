@@ -63,10 +63,14 @@
 
 .write-pen {
     /* border: solid red; */
-
+    color: gray;
     display: flex;
     font-size: 1.8rem;
     margin-top: 10px;
     gap: 0.3rem;
     cursor: pointer;
+}
+
+.write-pen:hover {
+    color: black;
 }

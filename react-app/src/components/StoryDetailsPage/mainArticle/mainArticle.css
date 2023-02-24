@@ -13,14 +13,12 @@
 }
 
 .content-article {
-    /* border: solid blue; */
     overflow: scroll;
     width: 100%;
     height: 100vh;
     padding: 2rem;
 }
 .header-container-article {
-    /* border: solid blue; */
     display: flex;
     justify-content: space-between;
     margin-top: 2.2rem;
@@ -86,7 +84,6 @@
 }
 
 .banner-container-article {
-    /* border: solid blue; */
     height: 18rem;
     display: grid;
     overflow: hidden;

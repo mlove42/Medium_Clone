@@ -82,7 +82,6 @@ a {
     align-items: center;
 }
 .name-user {
-    /* border: solid blue; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -103,7 +102,6 @@ a {
 
 .client-comment input {
     border: none;
-    /* border: solid blue; */
 
     margin-top: -10px;
     width: 375px;

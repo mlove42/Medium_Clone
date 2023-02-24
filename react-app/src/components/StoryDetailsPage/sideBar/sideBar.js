@@ -11,7 +11,7 @@ import {
     editMyComment,
 } from "../../../store/comment";
 import "./commentCards.css";
-import { IoCloseSharp } from "react-icons";
+
 import "./sidebar.css";
 import { IoClose } from "react-icons/io5";
 
@@ -116,7 +116,7 @@ const SideBar = () => {
                             <h1>Responses ({comments.length}) </h1>
                             <IoClose
                                 onClick={handleCloseSideBar}
-                                style={{ cursor: "pointer" }}
+                                style={{ cursor: "pointer", fontSize: "30px" }}
                             />
                         </div>
                         <PostComment />

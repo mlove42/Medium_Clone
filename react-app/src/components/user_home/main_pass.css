@@ -1,13 +1,33 @@
+.main-page-user {
+    width: 100%;
+}
+
 .user-home {
     border-right: solid gray;
+
     display: flex;
     /* margin-top: 5rem; */
     padding-top: 8rem;
-    padding-right: 2rem;
+    padding-right: 1rem;
 }
 
 .user-info {
     margin-left: 3rem;
     width: 20rem;
     margin-top: 5rem;
+}
+
+@media screen and (max-width: 1500px) {
+    .user-home {
+        padding-top: 8rem;
+        padding-right: 2rem;
+        margin-left: -24rem;
+        /* width: 100%; */
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .user-info {
+        margin-top: 5rem;
+    }
 }

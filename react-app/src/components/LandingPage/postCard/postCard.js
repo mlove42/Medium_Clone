@@ -16,9 +16,6 @@ const PostCard = () => {
         return Object.values(store.story);
     });
 
-    // console.log(stories, "WHAT ARE STORIES");
-    // console.log(stories, "STORIES INFO");
-    // console.log(stories, "THIS ARE THE STORIES");
     useEffect(() => {
         dispatch(getStories());
     }, [dispatch]);

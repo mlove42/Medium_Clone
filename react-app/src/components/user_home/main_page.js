@@ -21,7 +21,7 @@ const MainPage = () => {
 
     return (
         <>
-            <div>
+            <div className="main-page-user">
                 {/* <Banner /> */}
                 <NavBar />
                 <div className="view-page-content">

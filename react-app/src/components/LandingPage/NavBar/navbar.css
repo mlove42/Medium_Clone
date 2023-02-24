@@ -1,5 +1,4 @@
 .wrapper {
-    /* border: solid blue; */
     display: flex;
     padding: 1.25rem;
     justify-content: center;
@@ -48,9 +47,14 @@
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: #000000;
+
     color: #ffffff;
     border-radius: 9999px;
     /* padding: 0.6rem; */
+}
+.accentedButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .demo-user {
@@ -61,8 +65,12 @@
     background-color: green;
     color: #ffffff;
     border-radius: 9999px;
+    cursor: pointer;
 }
-
+.demo-user:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 .story {
     padding: 0.5rem;
 }
@@ -111,18 +119,19 @@
 .menu-photo {
     display: flex;
     gap: 0.3rem;
-    /* border: solid blue; */
 }
 
 .menu-photo {
     display: flex;
     gap: 0.3rem;
+    cursor: pointer;
 }
 
 .icon-menu {
     /* border: solid red; */
     margin-top: 0.5rem;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
 .author-image-nav-bar {

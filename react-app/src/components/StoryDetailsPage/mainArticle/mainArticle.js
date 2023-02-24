@@ -70,9 +70,10 @@ const MainArticle = (store) => {
                     <h4 className="subtitle-main">
                         <div>{store?.store?.brief}</div>
                     </h4>
-                    <div className="body-article-main">
-                        {store?.store?.body}
-                    </div>
+                    <div
+                        // className="body-article-main"
+                        dangerouslySetInnerHTML={{ __html: store?.store?.body }}
+                    ></div>
 
                     {/* <button onClick={handleOpenSideBar}>Open SideBar</button> */}
                     <div>

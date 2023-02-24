@@ -10,7 +10,8 @@ import {
     editStory,
 } from "../../../store/story";
 
-// import { addNewSpot } from "../../../store/spotsReducer";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const EditStory = () => {
     const dispatch = useDispatch();
@@ -27,6 +28,22 @@ const EditStory = () => {
     const [estimated_read, setEstimatedRead] = useState(story?.estimatedRead);
     const [image, setImage] = useState(story?.storyImage);
     const [load, setLoad] = useState(false);
+
+    const modules = {
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+            ],
+            ["link", "image"],
+            ["clean"],
+        ],
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -41,8 +58,6 @@ const EditStory = () => {
         const data = await dispatch(editStory(storyId, updateStory));
         if (data) {
             setErrors(data);
-            // console.log(data, "CAN I SEE THIS");
-            // console.log(data.length, "WHAT IS THIS LENGTH");
         }
 
         setLoad((prev) => !prev);
@@ -138,15 +153,12 @@ const EditStory = () => {
                                     Article Text
                                 </span>
                                 <span className="input-container-story">
-                                    <textarea
-                                        type="text"
-                                        className="input-field-story"
+                                    <ReactQuill
+                                        theme="snow"
                                         value={body}
-                                        rows={24}
-                                        // required
-                                        onChange={(e) =>
-                                            setBody(e.target.value)
-                                        }
+                                        onChange={setBody}
+                                        modules={modules}
+                                        className="input-field-story"
                                     />
                                 </span>
                             </div>

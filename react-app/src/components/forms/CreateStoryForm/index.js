@@ -5,7 +5,8 @@ import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createStory, getStories } from "../../../store/story";
-
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 // import { addNewSpot } from "../../../store/spotsReducer";
 
 const CreateStory = () => {
@@ -18,6 +19,21 @@ const CreateStory = () => {
     const [estimated_read, setEstimatedRead] = useState("");
     const [image, setImage] = useState("");
     const [load, setLoad] = useState(false);
+
+    const modules = {
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [
+                { list: "ordered" },
+                { list: "bullet" },
+                { indent: "-1" },
+                { indent: "+1" },
+            ],
+            ["link", "image"],
+            ["clean"],
+        ],
+    };
     const handleSubmit = async (e) => {
         // let data;
         e.preventDefault();
@@ -60,8 +76,8 @@ const CreateStory = () => {
                     >
                         <div className="help-div">
                             <div className="small-field">
-                                <span className="field-title">Title</span>
-                                <span className="input-container-story">
+                                <div className="field-title">Title</div>
+                                <div className="input-container-story">
                                     <input
                                         className="input-field-story"
                                         type="text"
@@ -71,11 +87,11 @@ const CreateStory = () => {
                                             setTitle(e.target.value)
                                         }
                                     />
-                                </span>
+                                </div>
                             </div>
                             <div className="small-field">
-                                <span className="field-title">Brief</span>
-                                <span className="input-container-story">
+                                <div className="field-title">Brief</div>
+                                <div className="input-container-story">
                                     <input
                                         type="text"
                                         className="input-field-story"
@@ -84,13 +100,13 @@ const CreateStory = () => {
                                             setBrief(e.target.value)
                                         }
                                     />
-                                </span>
+                                </div>
                             </div>
                             <div className="small-field">
-                                <span className="field-title">
+                                <div className="field-title">
                                     Estimated Read (in minutes)
-                                </span>
-                                <span className="input-container-story">
+                                </div>
+                                <div className="input-container-story">
                                     <input
                                         type="text"
                                         className="input-field-story"
@@ -100,13 +116,13 @@ const CreateStory = () => {
                                             setEstimatedRead(e.target.value)
                                         }
                                     />
-                                </span>
+                                </div>
                             </div>
                             <div className="small-field">
-                                <span className="field-title">
+                                <div className="field-title">
                                     Story Image URL
-                                </span>
-                                <span className="input-container-story">
+                                </div>
+                                <div className="input-container-story">
                                     <input
                                         type="input"
                                         placeholder="Enter Story Image"
@@ -116,14 +132,12 @@ const CreateStory = () => {
                                             setImage(e.target.value)
                                         }
                                     />
-                                </span>
+                                </div>
                             </div>
                             <div className="small-field">
-                                <span className="field-title">
-                                    Article Text
-                                </span>
-                                <span className="input-container-story">
-                                    <textarea
+                                <div className="field-title">Article Text</div>
+                                <div className="input-container-story">
+                                    {/* <textarea
                                         type="text"
                                         className="input-field-story"
                                         placeholder="Enter text here"
@@ -132,8 +146,15 @@ const CreateStory = () => {
                                         onChange={(e) =>
                                             setBody(e.target.value)
                                         }
+                                    /> */}
+                                    <ReactQuill
+                                        theme="snow"
+                                        value={body}
+                                        onChange={setBody}
+                                        className="input-field-story"
+                                        modules={modules}
                                     />
-                                </span>
+                                </div>
                             </div>
                             <div className="error-messages">
                                 {errors?.map((error, ind) => (

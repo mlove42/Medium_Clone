@@ -43,10 +43,6 @@ function PostComment() {
                                         </strong>
                                     </div>
                                 </div>
-
-                                <div className="review-ratings">
-                                    <BsThreeDots />
-                                </div>
                             </div>
                             <div className="comment-section">
                                 <div className="client-comment">

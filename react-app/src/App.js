@@ -20,6 +20,7 @@ import Menu from "./components/menu";
 import { authenticate } from "./store/session";
 import MainPage from "./components/user_home/main_page";
 import Footer from "./components/footer/footer";
+import TextEditor from "./components/forms/TextEditor";
 function App() {
     const [loaded, setLoaded] = useState(false);
     const location = useLocation();
@@ -64,6 +65,9 @@ function App() {
                 {/* <ProtectedRoute path="/users/:userId" exact={true}>
                     <User /> */}
                 {/* </ProtectedRoute> */}
+                <Route path="/text-editor" exact={true}>
+                    <TextEditor />
+                </Route>
                 <ProtectedRoute path="/story" exact={true}>
                     <CreateStory />
                 </ProtectedRoute>
