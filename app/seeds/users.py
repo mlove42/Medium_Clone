@@ -21,7 +21,7 @@ thanos = User(
         username='thanos', email='thanos@aa.io', first_name="Thanos", last_name="Dione", profile_pic="https://www.looper.com/img/gallery/the-big-thanos-question-mcu-fans-have-about-what-if-episode-8/intro-1632963190.jpg",
          password='password')
 demo = User(
-        username='demo', email='demo@aa.io', first_name="Demo", last_name="User", 
+        username='noPic', email='demo@aa.io', first_name="NoPicture", last_name="User", 
          password='password')
 def seed_users():
     db.session.add(doctor)
