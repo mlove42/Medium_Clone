@@ -74,6 +74,9 @@ export const deleteMyComment = (commentId) => async (dispatch) => {
 // Edit a Comment
 export const editMyComment =
     (commentId, editedCommentData) => async (dispatch) => {
+        console.log(commentId, "COMMIT ID THUNK");
+        console.log(editedCommentData, "DATA THUNK");
+
         const response = await fetch(`/api/comments/${commentId}`, {
             method: "PUT",
             headers: {

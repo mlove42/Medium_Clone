@@ -79,7 +79,7 @@ const SideBar = () => {
     const comment = useSelector((state) => state?.comment[commentId]);
     const [body, setBody] = useState("");
     const [actionToggled, setActionToggled] = useState();
-
+    console.log(commentId, "IS THIS HERE???");
     const handleSubmit = async (e) => {
         e.preventDefault();
 

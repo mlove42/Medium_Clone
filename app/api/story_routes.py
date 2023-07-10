@@ -30,6 +30,7 @@ def create_new_story():
     current_user_id = int(current_user.get_id())
     stories = Story.query.all()
     form = StoryForm()
+
     form['csrf_token'].data = request.cookies['csrf_token']
     # story_data = request.json
     if form.validate_on_submit():
@@ -56,9 +57,6 @@ def create_new_story():
 def get(id):
 
     story = Story.query.get(id)
-   
-  
-   
    
     return story.to_dict_home_page()
     

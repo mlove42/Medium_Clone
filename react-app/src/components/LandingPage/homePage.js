@@ -17,6 +17,7 @@ const AllStories = () => {
     useEffect(() => {
         dispatch(getStories());
     }, [dispatch]);
+
     let sessionLinks;
     if (sessionUser) {
         return <MainPage />;

@@ -19,7 +19,7 @@ const AllComments = () => {
 
     const [commentId, setCommentId] = useState("");
     const comment = useSelector((state) => state?.comment[commentId]);
-
+    console.log(comment, "WHAT IS THIS???");
     const [body, setBody] = useState(comment?.body);
     // console.log(editState, "EDIT STATE");
     useEffect(() => {
