@@ -8,7 +8,7 @@ const Banner = () => {
                     <h1 className="line1">Stay Curious.</h1>
                     <h3 className="line2">
                         Discover stories, thinking, and expertise from writers
-                        on any topic!
+                        on any topic.
                     </h3>
 
                     {/* <button className="start-button">Start Reading</button> */}
